@@ -2,63 +2,6 @@
 
 ## API documentation
 
-### Add a product
-
-* **URL**
-
-  /addproduct
-
-* **Method:**
-
-  `POST`
-
-* **URL Params**
-
-  **Required:**
-
-  There are no required URL params
-
-
-  **Optional:**
-  
-  There are no optional URL params
-
-  * **Body Data**
-
-  Must be sent as JSON with the correct headers
-
-  **Required:**
-
-    ```json
-    {
-      "SKU": "String",
-      "stock_level": "Number",
-      "name": "String",
-      "price": "Number"
-    }
-    ```
-
-  **Example:**
-
-  `/addproduct`
-
-* **Success Response:**
-
-    * **Code:** 201 CREATED <br />
-      **Content:** <br />
-
-  ```json
-  {"message": "Successfully added item."}
-  ```
-
-* **Error Response:**
-
-    * **Code:** 400 BAD REQUEST <br />
-      **Content:** `{"message": "Invalid or missing item information", "data": []}`
-
-    * **Code:** 500 SERVER ERROR <br />
-      **Content:** `{"message": "Unexpected error", "data": []}`
-
 ### Get all products
 
 * **URL**
@@ -110,6 +53,62 @@
     * **Code:** 500 SERVER ERROR <br />
       **Content:** `{"message": "Unexpected error"}`
 
+### Add a product
+
+* **URL**
+
+  /products
+
+* **Method:**
+
+  `POST`
+
+* **URL Params**
+
+  **Required:**
+
+  There are no required URL params
+
+
+  **Optional:**
+  
+  There are no optional URL params
+
+  * **Body Data**
+
+  Must be sent as JSON with the correct headers
+
+  **Required:**
+
+    ```json
+    {
+      "SKU": "String",
+      "stock_level": "Number",
+      "name": "String",
+      "price": "Number"
+    }
+    ```
+
+  **Example:**
+
+  `/products`
+
+* **Success Response:**
+
+    * **Code:** 201 CREATED <br />
+      **Content:** <br />
+
+  ```json
+  {"message": "Successfully added item."}
+  ```
+
+* **Error Response:**
+
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{"message": "Invalid or missing item information", "data": []}`
+
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error", "data": []}`
 
 ### Update a product
 
@@ -136,10 +135,16 @@
   ```json
   { 
     "SKU": "SKU",
-    {
-    "Updated field": "String",
-    "Updated value": "String | Number"
-    }
+      [
+        {
+          "name": "String",
+          "value": "String"
+        },
+        {
+          "price": "String",
+          "value": "Number"
+        }
+      ]
   }
   ```
 
@@ -153,7 +158,7 @@
       **Content:** <br />
 
   ```json
-  {"message": "Successfully updated product."}
+    {"message": "Successfully updated product."}
   ```
 
 * **Error Response:**
@@ -164,6 +169,7 @@
   * **Code:** 500 SERVER ERROR <br />
   **Content:** `{"message": "Unexpected error"}`
 
+* **NOTE: You can optionally update more than one field per request**
 
 ### Delete a product
 
