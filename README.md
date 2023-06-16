@@ -268,3 +268,58 @@
 
   * **Code:** 500 SERVER ERROR <br />
     **Content:** `{"message": "Unexpected error"}`
+
+
+### Update stock levels
+
+* **URL**
+
+  /update/{SKU}
+
+* **Method:**
+
+  `PUT`
+
+* **URL Params**
+
+  **Required:**
+
+  There are no required URL params
+
+  **Optional:**
+
+  There are no optional URL params
+
+  * **Body Data**
+ 
+  ```json
+  { 
+    "SKU": "SKU",
+        {
+          "name": "String",
+          "stock_level": "Number"
+        }
+  }
+  ```
+
+  **Example:**
+
+  `/update/ICBWHTIS0004`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:** <br />
+
+  ```json
+    {"message": "Successfully updated stock levels for product."}
+  ```
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+  **Content:** `{"message": "Invalid sku", "data": []}`
+
+  * **Code:** 500 SERVER ERROR <br />
+  **Content:** `{"message": "Unexpected error"}`
+
