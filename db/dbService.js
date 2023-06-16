@@ -11,4 +11,3 @@ const createConnection = () => {
 
 
 module.exports.createConnection = createConnection;
-
