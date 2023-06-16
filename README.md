@@ -304,7 +304,7 @@
 
   **Example:**
 
-  `/products/ICBWHTIS0004`
+  `/update/ICBWHTIS0004`
 
 * **Success Response:**
 
