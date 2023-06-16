@@ -2,8 +2,13 @@ const getProductsRepository = require('../repositories/getProductsRepository');
 
 const getProducts = async () => {
     console.log('Service: getProducts');
-    const response = await getProductsRepository.getProducts();
-    return {"products": response}
-}
+
+    try {
+        return await getProductsRepository.getProducts();
+    } catch {
+        const message = "Unexpected error";
+        throw new Error(message);
+    }
+};
 
 module.exports.getProducts = getProducts;
