@@ -82,9 +82,8 @@
 
     ```json
     {
-      "SKU": "String",
-      "stock_level": "Number",
       "name": "String",
+      "stock_level": "Number",
       "price": "Number"
     }
     ```
