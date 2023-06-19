@@ -2,7 +2,12 @@ const addProductsRepository = require('../repositories/addProductsRepository');
 
 const addProducts = async () => {
     console.log('Service: addProducts');
-    // some code here pls
-}
+    try {
+        return await addProductsRepository.addProducts();
+    } catch {
+        const message = "Unexpected error";
+        throw new Error(message);
+    }
+};
 
 module.exports.addProducts = addProducts;
