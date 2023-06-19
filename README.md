@@ -137,12 +137,10 @@
     "SKU": "SKU",
       [
         {
-          "name": "String",
-          "value": "String"
+          "name": "String"         
         },
         {
-          "price": "String",
-          "value": "Number"
+          "price": "Number" 
         }
       ]
   }
