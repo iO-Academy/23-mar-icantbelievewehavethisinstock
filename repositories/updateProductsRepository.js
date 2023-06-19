@@ -1,6 +1,6 @@
 const dbService = require('../db/dbService');
 const updateProducts = async (id, updatedDetails) => {
-    const connection = await dbService.createConnection()
+    const connection = await dbService.createConnection();
 
     const name = updatedDetails.updatedData.name;
     const price = updatedDetails.updatedData.price;

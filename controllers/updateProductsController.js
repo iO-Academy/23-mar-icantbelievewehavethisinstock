@@ -3,7 +3,7 @@ const updateProductsService = require('../services/updateProductsService');
 const updateProducts = (request, response) => {
     console.log('Controller: updateProducts');
     const SKU = request.params.SKU;
-    const updatedProductInfo = request.body
+    const updatedProductInfo = request.body;
     updateProductsService.updateProducts(SKU, updatedProductInfo)
         .then(() => {
             const message = {"message": "Successfully updated product."}

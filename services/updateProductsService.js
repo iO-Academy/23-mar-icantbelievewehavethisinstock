@@ -9,7 +9,7 @@ const updateProducts = async (SKU, updatedDetails) => {
         throw new Error(message);
     }
 
-    const id = SKUToID.SKUToId(SKU)
+    const id = SKUToID.SKUToId(SKU);
 
     try {
         return await updateProductsRepository.updateProducts(id, updatedDetails)
