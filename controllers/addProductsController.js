@@ -1,7 +1,7 @@
 const addProductsService = require('../services/addProductsService');
 
 const addProducts = (request, response) => {
-    const newProduct = request.body
+    const newProduct = request.body;
     addProductsService.addProducts(newProduct)
         .then((result) => {
             const json = {"message": "Successfully added new Product: " + result.name + " with new SKU of: " + result.SKU + "."};
