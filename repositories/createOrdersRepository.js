@@ -16,3 +16,6 @@ const createOrder = async (newOrder) => {
 
     // How to get them to do subsequent queries?
 }
+
+// order field of orders will probably have to be json, format "orders": [{"SKU":"string","quantity":"number"},{...}]
+// json.stringify() to turn to string to store in DB. json.parse() to turn back into json
