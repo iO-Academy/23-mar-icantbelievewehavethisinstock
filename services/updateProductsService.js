@@ -4,7 +4,7 @@ const SKUToID = require('../functions/sku-to-id')
 const updateProducts = async (SKU, updatedDetails) => {
     console.log('Service: updateProducts');
 
-    if (!SKU.startsWith("ICBWHTIS") || SKU.length > 12) {
+    if(!validateSKU.validateSKU(SKU)) {
         const message = "Invalid SKU";
         throw new Error(message);
     }
