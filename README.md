@@ -51,7 +51,7 @@
 * **Error Response:**
 
     * **Code:** 500 SERVER ERROR <br />
-      **Content:** `{"message": "Unexpected error"}`
+      **Content:** `{"message": "Unexpected error", "data": []}`
 
 ### Add a product
 
@@ -161,7 +161,7 @@
   **Content:** `{"message": "Invalid product data", "data": []}`
 
   * **Code:** 500 SERVER ERROR <br />
-  **Content:** `{"message": "Unexpected error"}`
+  **Content:** `{"message": "Unexpected error", "data": []}`
 
 * **NOTE: You can optionally update more than one field per request**
 
@@ -212,7 +212,7 @@
   **Content:** `{"message": "Invalid SKU", "data": []}`
 
   * **Code:** 500 SERVER ERROR <br />
-  **Content:** `{"message": "Unexpected error"}`
+  **Content:** `{"message": "Unexpected error", "data": []}`
 
 
 ### Get stock levels
@@ -261,7 +261,7 @@
     **Content:** `{"message": "Invalid SKU", "data": []}`* 
 
   * **Code:** 500 SERVER ERROR <br />
-    **Content:** `{"message": "Unexpected error"}`
+    **Content:** `{"message": "Unexpected error", "data": []}`
 
 
 ### Update stock levels
