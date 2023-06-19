@@ -1,5 +1,4 @@
 const dbService = require('../db/dbService');
-const SKUToID = require('../functions/sku-to-id')
 
 const deleteProducts = async (id) => {
     console.log('Repository: deleteProducts');

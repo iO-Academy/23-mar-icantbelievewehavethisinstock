@@ -4,7 +4,7 @@ const deleteProducts = (request, response) => {
     console.log('Controller: deleteProducts');
     const SKU = request.params.SKU;
     deleteProductsService.deleteProducts(SKU)
-        .then((result) => {
+        .then(() => {
             const message = {"message": "Successfully deleted product."}
             response.send(message)
         })
