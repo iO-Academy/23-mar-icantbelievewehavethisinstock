@@ -133,19 +133,13 @@
   * **Body Data**
  
   ```json
-  { 
+  {
     "SKU": "SKU",
-      [
-        {
-          "name": "String",
-          "value": "String"
-        },
-        {
-          "price": "String",
-          "value": "Number"
-        }
-      ]
-  }
+    "updatedData":  {
+        "name": "string",        
+        "price": "number"
+    }
+   }
   ```
 
   **Example:**
@@ -195,7 +189,7 @@
  
   ```json
   { 
-    "SKU": "SKU",
+    "SKU": "SKU"
   }
   ```
 
