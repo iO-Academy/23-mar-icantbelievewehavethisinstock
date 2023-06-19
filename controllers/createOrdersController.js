@@ -3,6 +3,7 @@ const createOrdersService = require('../services/createOrdersService')
 const createOrder = (request, response) => {
     console.log('Controller: createOrder');
     const newOrder = req.body;
+
     createOrdersService.createOrder(newOrder)
         .then((result) => {
             response.send(result)
