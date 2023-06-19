@@ -6,7 +6,7 @@ const getOrders = async () => {
 
     const connection = await dbService.createConnection()
     return connection.query('SELECT `id`, `customer_email`, `customer_name`, `address_line_1`, `address_line_2`,' +
-        ' `address_line_3`, `town_city`, `postcode`, `country`, `order` FROM `products`;');
+        ' `address_line_3`, `town_city`, `postcode`, `country`, `order` FROM `orders`;');
 }
 
 module.exports.getOrders = getOrders;
