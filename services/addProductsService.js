@@ -1,7 +1,6 @@
 const addProductsRepository = require('../repositories/addProductsRepository');
 
 const addProducts = async () => {
-    console.log('Service: addProducts');
     try {
         return await addProductsRepository.addProducts();
     } catch {

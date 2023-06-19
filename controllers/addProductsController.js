@@ -1,9 +1,7 @@
 const addProductsService = require('../services/addProductsService');
-const getProductsService = require("../services/getProductsService");
 
 const addProducts = (request, response) => {
-    console.log('Controller: addProducts');
-    getProductsService.getProducts()
+    addProductsService.addProducts()
         .then((result) => {
             const json = {"products": result}
             response.send(json)
