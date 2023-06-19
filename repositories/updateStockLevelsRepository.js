@@ -1,9 +1,11 @@
 const dbService = require('../db/dbService');
 
-const updateStockLevels = async() => {
+const updateStockLevels = async(id, updatedStockLevel) => {
     console.log("Repository: updateStockLevels");
     const connection = await dbService.createConnection()
-    return connection.query("UPDATE `products` SET `stock_level` = `stock_level` + ? WHERE `SKU` = ?");
+    const sql = "UPDATE `products` SET `stock_level` = ? WHERE `id` = ?;";
+    const values = [updatedStockLevel, id]
+    return connection.query(sql, values)
 }
 
 module.exports.updateStockLevels = updateStockLevels;

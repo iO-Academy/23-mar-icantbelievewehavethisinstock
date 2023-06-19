@@ -9,7 +9,6 @@ const validateSKU = (SKU) => {
     if (containsICBWHTIS && isSKUcorrectLength) {
         validSKU = true
     }
-
     return validSKU
 }
 

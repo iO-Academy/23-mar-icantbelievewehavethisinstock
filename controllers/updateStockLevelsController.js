@@ -6,7 +6,7 @@ const updateStockLevels = (request, response) => {
     const updatedStockLevels = request.body;
 
     updateStockLevelsService
-    .updateStockLevels(SKU)
+    .updateStockLevels(SKU, updatedStockLevels)
     .then(() => {
         const message = {"message": "Successfully updated stock levels for product."}
         response.send(message);
