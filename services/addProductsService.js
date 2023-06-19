@@ -1,11 +1,16 @@
 const addProductsRepository = require('../repositories/addProductsRepository');
 
-const addProducts = async () => {
-    try {
-        return await addProductsRepository.addProducts();
-    } catch {
-        const message = "Unexpected error";
-        throw new Error(message);
+const addProducts = async (newProduct) => {
+    if (!newProduct.name || !newProduct.stock_level || !newProduct.price) {
+        const missingInfoMessage = "Invalid information supplied";
+        throw new Error(missingInfoMessage);
+    } else {
+        try {
+            return await addProductsRepository.addProducts(newProduct);
+        } catch {
+            const dbErrorMessage = "Unable to connect to database";
+            throw new Error(dbErrorMessage);
+        }
     }
 };
 

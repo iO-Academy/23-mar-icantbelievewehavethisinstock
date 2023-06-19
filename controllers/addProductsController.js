@@ -1,7 +1,8 @@
 const addProductsService = require('../services/addProductsService');
 
 const addProducts = (request, response) => {
-    addProductsService.addProducts()
+    const newProduct = request.body
+    addProductsService.addProducts(newProduct)
         .then((result) => {
             const json = {"products": result}
             response.send(json)
