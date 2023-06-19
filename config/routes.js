@@ -3,7 +3,7 @@ const getProductsController = require('../controllers/getProductsController');
 const updateProductsController = require('../controllers/updateProductsController');
 const deleteProductsController = require('../controllers/deleteProductsController');
 const getStockLevelsController = require('../controllers/getStockLevelsController');
-// const updateStockLevelsController = require('../controllers/updateStockLevelsController');
+const updateStockLevelsController = require('../controllers/updateStockLevelsController');
 
 const routes = (app) => {
     app.get('/products', getProductsController.getProducts); // Get all products
@@ -11,7 +11,7 @@ const routes = (app) => {
     app.put('/products/:SKU', updateProductsController.updateProducts); // Update a product
     app.delete('/products/:SKU', deleteProductsController.deleteProducts); // Delete a product
     app.get('/products/:SKU', getStockLevelsController.getStocksLevels); // Get stock levels
-    // app.put('/update/:SKU', updateStockLevelsController.updateStockLevels); // Update stock levels
+    app.put('/update/:SKU', updateStockLevelsController.updateStockLevels); // Update stock levels
 }
 
 module.exports = routes;
