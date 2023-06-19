@@ -51,7 +51,7 @@
 * **Error Response:**
 
     * **Code:** 500 SERVER ERROR <br />
-      **Content:** `{"message": "Unexpected error"}`
+      **Content:** `{"message": "Unexpected error", "data": []}`
 
 ### Add a product
 
@@ -82,9 +82,8 @@
 
     ```json
     {
-      "SKU": "String",
-      "stock_level": "Number",
       "name": "String",
+      "stock_level": "Number",
       "price": "Number"
     }
     ```
@@ -133,19 +132,13 @@
   * **Body Data**
  
   ```json
-  { 
+  {
     "SKU": "SKU",
-      [
-        {
-          "name": "String",
-          "value": "String"
-        },
-        {
-          "price": "String",
-          "value": "Number"
-        }
-      ]
-  }
+    "updatedData":  {
+        "name": "string",        
+        "price": "number"
+    }
+   }
   ```
 
   **Example:**
@@ -167,7 +160,7 @@
   **Content:** `{"message": "Invalid product data", "data": []}`
 
   * **Code:** 500 SERVER ERROR <br />
-  **Content:** `{"message": "Unexpected error"}`
+  **Content:** `{"message": "Unexpected error", "data": []}`
 
 * **NOTE: You can optionally update more than one field per request**
 
@@ -195,7 +188,7 @@
  
   ```json
   { 
-    "SKU": "SKU",
+    "SKU": "SKU"
   }
   ```
 
@@ -218,7 +211,7 @@
   **Content:** `{"message": "Invalid SKU", "data": []}`
 
   * **Code:** 500 SERVER ERROR <br />
-  **Content:** `{"message": "Unexpected error"}`
+  **Content:** `{"message": "Unexpected error", "data": []}`
 
 
 ### Get stock levels
@@ -267,7 +260,7 @@
     **Content:** `{"message": "Invalid SKU", "data": []}`* 
 
   * **Code:** 500 SERVER ERROR <br />
-    **Content:** `{"message": "Unexpected error"}`
+    **Content:** `{"message": "Unexpected error", "data": []}`
 
 
 ### Update stock levels

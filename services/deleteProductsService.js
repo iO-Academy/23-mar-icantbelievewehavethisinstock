@@ -1,10 +1,11 @@
 const deleteProductsRepository = require('../repositories/deleteProductsRepository');
 const SKUToID = require('../functions/sku-to-id')
+const validateSKU = require('../functions/validate-sku')
 
 const deleteProducts = async (SKU) => {
     console.log('Service: deleteProducts');
 
-    if(!SKU.startsWith("ICBWHTIS")) {
+    if(!validateSKU.validateSKU(SKU)) {
         const message = "Invalid SKU";
         throw new Error(message);
     }
