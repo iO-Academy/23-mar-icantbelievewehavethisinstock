@@ -3,12 +3,13 @@ const updateStockLevelsService = require('../services/updateStockLevelsService')
 const updateStockLevels = (request, response) => {
     console.log('Controller: updateStockLevels');
     const SKU = request.params.SKU;
+    const updatedStockLevels = request.body;
 
     updateStockLevelsService
     .updateStockLevels(SKU)
     .then(() => {
         const message = {"message": "Successfully updated stock levels for product."}
-        response.status(200).json(message);
+        response.send(message);
     })
     .catch((error) => {
         let status = 500;

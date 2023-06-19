@@ -1,21 +1,21 @@
 const updateStockLevelsRepository = require('../repositories/updateStockLevelsRepository');
 const SKUToID = require('../functions/sku-to-id');
-const getStockLevelsService = require('../services/getStockLevelsService');
+const validateSKU = require('../functions/validate-sku');
+const getStockLevels = require('../services/getStockLevelsService');
 
-const updateStockLevels = async (SKU) => {
+const updateStockLevels = async (SKU, updatedStockLevel) => {
 
-    console.log('Service: updateStockLevels');
-    if(!SKU.startsWith("ICBWHTIS") || SKU.length > 12) {
+    console.log('Service: updatedStockLevels');
+    if(!validateSKU.validateSKU(SKU) ) {
         const message = "Invalid SKU";
         throw new Error(message);
     }
 
-    const id = SKUToID.SKUToId(SKU)
-
     try {
-        const stockLevels = await getStockLevelsService.getStockLevels(id);
-        console.log(typeof(stockLevels));
-        // return await getStockLevelsService.getStockLevels(id)
+        const currentStockLevels = await getStockLevels.getStockLevels(SKU);
+        console.log(currentStockLevels);
+      // if(stockLevels.stock_level >== updatedStockLevel.stock_level) {
+      // }
     } catch {
         const message = "Unexpected error"
         throw new Error(message)

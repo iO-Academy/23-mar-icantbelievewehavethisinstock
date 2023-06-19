@@ -1,5 +1,6 @@
 const getStockLevelsRepository = require('../repositories/getStockLevelsRepository');
 const SKUToID = require("../functions/sku-to-id");
+const validateSKU = require("../functions/validate-sku");
 
 const getStockLevels = async (SKU) => {
     console.log('Service: getStockLevels');
