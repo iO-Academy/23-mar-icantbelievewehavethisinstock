@@ -4,7 +4,8 @@ const getProductsController = require('../controllers/getProductsController');
 const deleteProductsController = require('../controllers/deleteProductsController');
 const getStockLevelsController = require('../controllers/getStockLevelsController');
 // const updateStockLevelsController = require('../controllers/updateStockLevelsController');
-const createOrdersController = require('../controllers/createOrdersController')
+const createOrdersController = require('../controllers/createOrdersController');
+const getOrdersController = require('../controllers/getOrdersController');
 
 const routes = (app) => {
     app.get('/products', getProductsController.getProducts); // Get all products
@@ -14,6 +15,7 @@ const routes = (app) => {
     app.get('/products/:SKU', getStockLevelsController.getStocksLevels); // Get stock levels
     // app.put('/update/:SKU', updateStockLevelsController.updateStockLevels); // Update stock levels
     app.post('/orders', createOrdersController.createOrder) // Add order
+    app.get('/orders', getOrdersController.getOrders); // Get all orders
 }
 
 module.exports = routes;
