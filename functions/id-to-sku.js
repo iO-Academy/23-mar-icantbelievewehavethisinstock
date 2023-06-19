@@ -17,4 +17,4 @@ const idToSKU = (id) => {
     return characters + number;
 }
 
-modules.exports.idToSKU = idToSKU;
+module.exports.idToSKU = idToSKU;
