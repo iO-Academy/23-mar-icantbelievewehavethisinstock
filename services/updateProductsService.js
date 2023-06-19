@@ -12,7 +12,7 @@ const updateProducts = async (SKU, updatedDetails) => {
     const id = SKUToID.SKUToId(SKU)
 
     try {
-        return await updateProductsRepository.updateProducts(id,updatedDetails)
+        return await updateProductsRepository.updateProducts(id, updatedDetails)
     } catch {
         const message = "Unexpected error"
         throw new Error(message)
