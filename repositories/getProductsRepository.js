@@ -1,5 +1,6 @@
 const dbService = require('../db/dbService');
 
+
 const getProducts = async () => {
     console.log('Repository: getProducts');
 
