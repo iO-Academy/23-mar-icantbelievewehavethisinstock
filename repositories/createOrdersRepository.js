@@ -16,3 +16,5 @@ const createOrder = async (newOrder) => {
 
     // How to get them to do subsequent queries?
 }
+
+module.exports.createOrder = createOrder;
