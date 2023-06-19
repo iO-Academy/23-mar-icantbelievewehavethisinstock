@@ -14,7 +14,6 @@ const addProducts = async (newProduct) => {
         const result = await dbConnection.query(sql, values);
         const newId = result.insertId;
         const newSKU = idToSKU.idToSKU(newId);
-        console.log(newSKU)
         dbConnection.query('UPDATE `products` SET `SKU` = "' + newSKU + '" WHERE `id` = ' + newId + ';');
         return {name: newProduct.name, SKU: newSKU};
     }
