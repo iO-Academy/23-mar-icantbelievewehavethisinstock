@@ -1,9 +1,22 @@
 const updateProductsRepository = require('../repositories/updateProductsRepository');
+const SKUToID = require('../functions/sku-to-id')
 
-
-const updateProducts = async (sku,updatedDetails) => {
+const updateProducts = async (SKU, updatedDetails) => {
     console.log('Service: updateProducts');
-    return await updateProductsRepository.updateProducts(sku, updatedDetails);
+
+    if (!SKU.startsWith("ICBWHTIS") || SKU.length > 12) {
+        const message = "Invalid SKU";
+        throw new Error(message);
+    }
+
+    const id = SKUToID.SKUToId(SKU)
+
+    try {
+        return await updateProductsRepository.updateProducts(id,updatedDetails)
+    } catch {
+        const message = "Unexpected error"
+        throw new Error(message)
+    }
 }
 
 module.exports.updateProducts = updateProducts;

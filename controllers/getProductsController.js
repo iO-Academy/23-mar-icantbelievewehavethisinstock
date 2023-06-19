@@ -8,7 +8,7 @@ const getProducts = (request, response) => {
             const json = {"products": result}
             response.send(json)
         })
-        .catch((error) =>{
+        .catch((error) => {
             const message = {"message": error.message, "data": []}
             response.status(500).send(message)
         })
