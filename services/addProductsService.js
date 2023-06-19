@@ -7,9 +7,13 @@ const addProducts = async (newProduct) => {
     } else {
         try {
             return await addProductsRepository.addProducts(newProduct);
-        } catch {
-            const dbErrorMessage = "Unable to connect to database";
-            throw new Error(dbErrorMessage);
+        } catch (Error) {
+            if (Error.message.startsWith('Invalid')) {
+                throw Error
+            } else {
+                const dbErrorMessage = "Unable to connect to database";
+                throw new Error(dbErrorMessage);
+            }
         }
     }
 };
