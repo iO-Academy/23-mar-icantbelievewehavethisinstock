@@ -1,15 +1,38 @@
-const constants = require('../config/constants')
+const validateShippingAddress = (shippingAddress) => {
+    let validShippingAddress = false;
+    let validateArray = [];
 
-const validateEmailAddress = (email) => {
-    let validEmailAddress = false;
+    const validPostcodeRegex = /^[a-z]{1,2}\d[a-z\d]?\s*\d[a-z]{2}$/i;
 
-    const validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-    if (email.value.match(validEmailRegex)) {
-        validEmailAddress = true;
+    if (typeof shippingAddress.customer_name === String) {
+        validateArray.push(1);
+    } else {
+        validateArray.push(0);
     }
 
-    return validEmailAddress
+    if (typeof shippingAddress.address_line_1 === String) {
+        validateArray.push(1);
+    } else {
+        validateArray.push(0);
+    }
+
+    if (typeof shippingAddress.town_city === String) {
+        validateArray.push(1);
+    } else {
+        validateArray.push(0);
+    }
+
+    if (shippingAddress.postcode.match(validPostcodeRegex)) {
+        validateArray.push(1);
+    } else {
+        validateArray.push(0);
+    }
+
+    if (!validateArray.includes(0)) {
+        validShippingAddress = true;
+    }
+
+    return validShippingAddress;
 }
 
-module.exports.validateEmailAddress = validateEmailAddress;
+module.exports.validateShippingAddress = validateShippingAddress;
