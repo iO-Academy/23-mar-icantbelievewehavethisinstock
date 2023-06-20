@@ -1,5 +1,5 @@
 const { SKUToId: SkuToIdTest } = require('../functions/sku-to-id');
-const constants = require('../config/constants')
+const constants = require('../config/constants');
 
 
 describe('convert SKU to Id', () => {
