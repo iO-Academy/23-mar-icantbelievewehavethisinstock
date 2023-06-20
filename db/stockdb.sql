@@ -23,6 +23,11 @@ SET NAMES utf8mb4;
 # Dump of table orders
 # ------------------------------------------------------------
 
+CREATE OR REPLACE DATABASE stock;
+
+
+USE stock;
+
 DROP TABLE IF EXISTS `orders`;
 
 CREATE TABLE `orders` (
