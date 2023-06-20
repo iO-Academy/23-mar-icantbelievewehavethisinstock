@@ -4,19 +4,19 @@ const validateShippingAddress = (shippingAddress) => {
 
     const validPostcodeRegex = /^[a-z]{1,2}\d[a-z\d]?\s*\d[a-z]{2}$/i;
 
-    if (typeof shippingAddress.customer_name === String) {
+    if (typeof shippingAddress.customer_name === 'string') {
         validateArray.push(1);
     } else {
         validateArray.push(0);
     }
 
-    if (typeof shippingAddress.address_line_1 === String) {
+    if (typeof shippingAddress.address_line_1 === 'string') {
         validateArray.push(1);
     } else {
         validateArray.push(0);
     }
 
-    if (typeof shippingAddress.town_city === String) {
+    if (typeof shippingAddress.town_city === 'string') {
         validateArray.push(1);
     } else {
         validateArray.push(0);

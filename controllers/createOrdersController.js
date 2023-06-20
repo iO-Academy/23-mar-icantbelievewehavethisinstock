@@ -1,7 +1,8 @@
 const createOrdersService = require('../services/createOrdersService')
 
 const createOrder = (request, response) => {
-    const newOrder = req.body;
+    console.log('Service: createOrder')
+    const newOrder = request.body;
 
     createOrdersService.createOrder(newOrder)
         .then((result) => {
