@@ -1,4 +1,4 @@
-const { validateSKU } = require('../functions/validate-sku')
+const { validateSKU } = require('../functions/validate-sku');
 
 describe('checks if supplied SKU is valid', () => {
     it('returns True if given ICBWHTIS0034', () => {
