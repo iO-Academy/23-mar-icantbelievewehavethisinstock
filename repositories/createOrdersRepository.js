@@ -3,7 +3,6 @@ const updateStockLevels = require('./updateStockLevelsRepository');
 const SKUToId = require("../functions/sku-to-id");
 const getStockLevels = require('../repositories/getStockLevelsRepository');
 const createOrder = async (newOrder, productsStringForDatabase) => {
-    console.log('Repository: createOrder');
     const dbConnection = await dbService.createConnection();
 
     const orderNumber = newOrder.order.order_number;

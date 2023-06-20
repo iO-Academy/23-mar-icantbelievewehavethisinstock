@@ -6,8 +6,6 @@ const validateShippingAddress = require('../functions/validate-shipping-address'
 const getAllStockLevels = require('../repositories/getAllStockLevelsRepository');
 
 const createOrder = async (newOrder) => {
-    console.log('Service: createOrder');
-
     if(!validateOrderNumber.validateOrderNumber(newOrder.order.order_number)) {
         const message = "Invalid Order Number";
         throw new Error(message);

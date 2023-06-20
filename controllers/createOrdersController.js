@@ -1,12 +1,11 @@
 const createOrdersService = require('../services/createOrdersService')
 
 const createOrder = (request, response) => {
-    console.log('Controller: createOrder')
     const newOrder = request.body;
 
     createOrdersService.createOrder(newOrder)
-        .then((result) => {
-            const formattedResult = result;
+        .then(() => {
+            const formattedResult = {"message": "Successfully placed order"};
             response.send(formattedResult)
         })
         .catch((error) => {
