@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.11.3-MariaDB-1:10.11.3+maria~ubu2204)
 # Database: stock
-# Generation Time: 2023-06-15 12:53:24 +0000
+# Generation Time: 2023-06-20 09:02:26 +0000
 # ************************************************************
 
 
@@ -41,6 +41,9 @@ CREATE TABLE `orders` (
   `postcode` varchar(255) NOT NULL,
   `country` varchar(255) DEFAULT 'United Kingdom',
   `order` varchar(511) NOT NULL,
+  `order_open` int(1) unsigned NOT NULL DEFAULT 1,
+  `order_shipped` int(1) unsigned NOT NULL DEFAULT 0,
+  `order_cancelled` int(1) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
