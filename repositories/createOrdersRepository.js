@@ -1,8 +1,18 @@
 const dbService = require('../db/dbService');
 
-const createOrder = async (newOrder) => {
+const createOrder = async (newOrder, productsStringForDatabase) => {
     console.log('Repository: createOrder');
     const connection = await dbService.createConnection();
+
+    const orderNumbersInDb = await dbConnection.query('SELECT `order` FROM `orders`;');
+    const orderNumbersResult = await orderNumbersInDb.map(order => order.order)
+    if (orderNumbersResult.includes(newOrder.order.order_number)) {
+        const message = "Invalid order number - Already exists in database";
+        throw new Error(message);
+    }
+
+
+
 
     const checkStockLevels = await connection.query()
     // forEach newOrder.order.products,
