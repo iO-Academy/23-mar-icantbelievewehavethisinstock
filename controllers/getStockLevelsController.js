@@ -6,12 +6,12 @@ const getStockLevels = (request, response) => {
 
     getStockLevelsService.getStockLevels(SKU)
         .then((result) => {
-            const json = {"product": result}
-            response.send(json)
+            const json = {"product": result};
+            response.send(json);
         })
         .catch((error) => {
             let status = 500;
-            const message = {"message": error.message, "data": []}
+            const message = {"message": error.message, "data": []};
 
             if (error.message.startsWith("Invalid")) {
                 status = 400;

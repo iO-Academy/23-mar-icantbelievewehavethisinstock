@@ -10,13 +10,13 @@ const getStockLevels = async (SKU) => {
         throw new Error(message);
     }
 
-    const id = SKUToID.SKUToId(SKU)
+    const id = SKUToID.SKUToId(SKU);
 
     try {
-        return await getStockLevelsRepository.getStockLevels(id)
+        return await getStockLevelsRepository.getStockLevels(id);
     } catch {
-        const message = "Unexpected error"
-        throw new Error(message)
+        const message = "Unexpected error";
+        throw new Error(message);
     }
 }
 

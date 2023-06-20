@@ -2,9 +2,11 @@ const dbService = require('../db/dbService');
 
 const deleteProducts = async (id) => {
     console.log('Repository: deleteProducts');
-    const connection = await dbService.createConnection()
+    const connection = await dbService.createConnection();
 
-    return connection.query('DELETE FROM `products` WHERE `id` =' + id + ';');
+    const sql = 'DELETE FROM `products` WHERE `id` = ?;';
+    const values = [id]
+    return connection.query(sql, values);
 }
 
 module.exports.deleteProducts = deleteProducts;
