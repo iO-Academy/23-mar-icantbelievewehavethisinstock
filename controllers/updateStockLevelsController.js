@@ -1,7 +1,6 @@
 const updateStockLevelsService = require('../services/updateStockLevelsService')
 
 const updateStockLevels = (request, response) => {
-    console.log('Controller: updateStockLevels');
     const SKU = request.params.SKU;
     const updatedStockLevels = request.body;
 

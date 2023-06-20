@@ -1,8 +1,6 @@
 const getProductsService = require('../services/getProductsService');
 
 const getProducts = (request, response) => {
-    console.log('Controller: getProducts');
-
     getProductsService.getProducts()
         .then((result) => {
             const json = {"products": result};
@@ -11,7 +9,7 @@ const getProducts = (request, response) => {
         .catch((error) => {
             const message = {"message": error.message, "data": []};
             response.status(500).send(message);
-        })
+        });
 }
 
 module.exports.getProducts = getProducts;

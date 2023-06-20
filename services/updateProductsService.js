@@ -2,8 +2,6 @@ const updateProductsRepository = require('../repositories/updateProductsReposito
 const SKUToID = require('../functions/sku-to-id')
 
 const updateProducts = async (SKU, updatedDetails) => {
-    console.log('Service: updateProducts');
-
     if(!validateSKU.validateSKU(SKU)) {
         const message = "Invalid SKU";
         throw new Error(message);

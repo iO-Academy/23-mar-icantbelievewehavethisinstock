@@ -4,7 +4,7 @@ const updateProductsController = require('../controllers/updateProductsControlle
 const deleteProductsController = require('../controllers/deleteProductsController');
 const getStockLevelsController = require('../controllers/getStockLevelsController');
 const updateStockLevelsController = require('../controllers/updateStockLevelsController');
-const createOrdersController = require('../controllers/createOrdersController')
+const createOrdersController = require('../controllers/createOrdersController');
 
 const routes = (app) => {
     app.get('/products', getProductsController.getProducts); // Get all products

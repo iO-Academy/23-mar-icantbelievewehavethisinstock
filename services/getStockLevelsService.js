@@ -3,8 +3,6 @@ const SKUToID = require("../functions/sku-to-id");
 const validateSKU = require("../functions/validate-sku");
 
 const getStockLevels = async (SKU) => {
-    console.log('Service: getStockLevels');
-
     if(!validateSKU.validateSKU(SKU)) {
         const message = "Invalid SKU";
         throw new Error(message);

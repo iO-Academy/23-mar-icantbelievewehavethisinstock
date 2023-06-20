@@ -1,8 +1,6 @@
 const dbService = require('../db/dbService');
 
 const getStockLevels = async (id) => {
-    console.log('Repository: getStockLevels');
-
     const connection = await dbService.createConnection()
     const sql = ('SELECT `name`, `price`, `stock_level` FROM `products` WHERE `id` = ?;');
     const values = [id];

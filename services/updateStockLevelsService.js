@@ -4,8 +4,6 @@ const validateSKU = require('../functions/validate-sku');
 const getStockLevels = require('../services/getStockLevelsService');
 
 const updateStockLevels = async (SKU, updatedStockLevels) => {
-    console.log('Service: updatedStockLevels');
-
     let message = "Unexpected Error";
 
     if (!validateSKU.validateSKU(SKU)) {
