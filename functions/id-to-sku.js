@@ -1,6 +1,6 @@
 const idToSKU = (id) => {
     const characters = 'ICBWHTIS';
-    const numberString = String(id)
+    const numberString = String(id);
     let number = '';
 
     if (numberString.length === 1) {
@@ -12,7 +12,7 @@ const idToSKU = (id) => {
     } else if (numberString.length === 4) {
         number = id;
     } else {
-        return "Invalid ID"
+        return "Invalid ID";
     }
 
     return characters + number;
