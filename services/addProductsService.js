@@ -9,7 +9,7 @@ const addProducts = async (newProduct) => {
             return await addProductsRepository.addProducts(newProduct);
         } catch (Error) {
             if (Error.message.startsWith('Invalid')) {
-                throw Error
+                throw Error;
             } else {
                 const dbErrorMessage = "Unable to connect to database";
                 throw new Error(dbErrorMessage);

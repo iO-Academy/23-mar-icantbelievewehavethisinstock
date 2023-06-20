@@ -16,6 +16,6 @@ const addProducts = (request, response) => {
                 response.status(500).send(message);
             }
         })
-}
+};
 
 module.exports.addProducts = addProducts;
