@@ -40,8 +40,11 @@ const createOrder = async (newOrder, productsStringForDatabase) => {
                 const quantity = product.quantity;
                 const stockLevelQuery = await getStockLevels.getStockLevels(id)
                 const stockLevel = stockLevelQuery[0].stock_level
-                const newStockLevel = stockLevel + quantity
-                await updateStockLevels.updateStockLevels(id, newStockLevel)
+                const newStockLevel = stockLevel - quantity
+                if (newStockLevel >= 0){
+                    await updateStockLevels.updateStockLevels(id, newStockLevel)
+                }
+
             })
             return await dbConnection.query(sql, values);
         } catch {

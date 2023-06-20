@@ -1,9 +1,9 @@
 const createOrdersRepository = require('../repositories/createOrdersRepository');
 const SKUtoID = require('../functions/sku-to-id');
-const getStockLevels = require('../repositories/getStockLevelsRepository');
 const validateOrderNumber = require('../functions/validate-order-number');
 const validateEmailAddress = require('../functions/validate-email-address');
 const validateShippingAddress = require('../functions/validate-shipping-address');
+const getAllStockLevels = require('../repositories/getAllStockLevelsRepository');
 
 const createOrder = async (newOrder) => {
     console.log('Service: createOrder');
@@ -23,25 +23,27 @@ const createOrder = async (newOrder) => {
         throw new Error(message);
     }
 
-    newOrder.order.products.forEach(async (product) => {
-        const id = SKUtoID.SKUToId(product.SKU);
-        const currentStockLevels = await getStockLevels.getStockLevels(id);
-        const currentStockLevelsNumber = await currentStockLevels.map(stock_level => stock_level.stock_level);
-        const newStockAmount = currentStockLevelsNumber[0] + product.quantity;
-
-        if (newStockAmount < 0) {
-            const message = `Out of stock of ${product.name}`
-            throw new Error(message)
-        }
-    })
+    const allStockLevels = await getAllStockLevels.getStockAllStockLevels();
 
     let productsStringForDatabase = [];
 
     newOrder.order.products.forEach((product) => {
         const id = SKUtoID.SKUToId(product.SKU);
         const quantity = product.quantity;
-        const stringForDb = `(${id}:${quantity})`
-        productsStringForDatabase.push(stringForDb);
+        const productWithId = (element) => {
+            return element.id === id
+        }
+        const positionInAllStockLevels = allStockLevels.findIndex(productWithId)
+        const currentStockLevel = allStockLevels[positionInAllStockLevels].stock_level
+        const newStockAmount = currentStockLevel - quantity
+
+        if (newStockAmount < 0) {
+            const message = `Not enough stock of ${product.name}`;
+            throw new Error(message);
+        } else {
+            const stringForDb = `(${id}:${quantity})`
+            productsStringForDatabase.push(stringForDb);
+        }
     })
 
     productsStringForDatabase = productsStringForDatabase.toString();
