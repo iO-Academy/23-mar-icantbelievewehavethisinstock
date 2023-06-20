@@ -1,30 +1,38 @@
 const createOrdersRepository = require('../repositories/createOrdersRepository');
+const SKUtoID = require('../functions/sku-to-id');
+const getStockLevels = require('../repositories/getStockLevelsRepository');
 
 const createOrder = async (newOrder) => {
     console.log('Service: createOrder');
 
-    // Validation here
-
-    // function - is order number valid
-    if(!validateOrderNumber.validateOrderNumber(newOrder.order.order_number)) { // something like this
+    if(!validateOrderNumber.validateOrderNumber(newOrder.order.order_number)) {
         const message = "Invalid Order Number";
         throw new Error(message);
     }
 
-    // function - is email address valid
-    if(!validateEmailAddress.validateEmailAddress(newOrder.order.email_address)) { // something like this
+    if(!validateEmailAddress.validateEmailAddress(newOrder.order.email_address)) {
         const message = "Invalid Email Address";
         throw new Error(message);
     }
 
-    // function is shipping address valid
-    if(!validateShippingAddress.validateShippingAddress(newOrder.order.shipping_address)) { // something like this
+    if(!validateShippingAddress.validateShippingAddress(newOrder.order.shipping_address)) {
         const message = "Invalid Shipping Address";
         throw new Error(message);
     }
 
+
+
+    let productsStringForDatabase = [];
+
+    newOrder.order.products.forEach((product) => {
+        const id = SKUtoID.SKUToId(product.SKU);
+        const quantity = product.quantity;
+        const stringForDb = `(${id}:${quantity})`
+        productsStringForDatabase.push(stringForDb);
+    })
+
     try {
-        return await createOrdersRepository.createOrder(newOrder);
+        return await createOrdersRepository.createOrder(newOrder, productsStringForDatabase);
     } catch {
         const message = "Unexpected error";
         throw new Error(message);
