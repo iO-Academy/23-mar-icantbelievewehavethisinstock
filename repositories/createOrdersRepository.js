@@ -27,7 +27,7 @@ const createOrder = async (newOrder, productsStringForDatabase) => {
     const orderNumbersInDb = await dbConnection.query('SELECT `order_number` FROM `orders`;');
     const orderNumbersArray = await orderNumbersInDb.map((order) => order.order_number);
     if (orderNumbersArray.includes(orderNumber)) {
-        const error = "Invalid order number - Already exists in database";
+        const error = "Invalid order number - Already exists in database.";
         throw new Error(error);
     } else {
         try {
@@ -52,7 +52,7 @@ const createOrder = async (newOrder, productsStringForDatabase) => {
             })
             return await dbConnection.query(sql, values);
         } catch {
-            const message = "There was an error processing your order";
+            const message = "There was an error processing your order.";
             throw new Error(message);
         }
     }

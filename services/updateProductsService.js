@@ -3,7 +3,7 @@ const SKUToID = require('../functions/sku-to-id')
 
 const updateProducts = async (SKU, updatedDetails) => {
     if(!validateSKU.validateSKU(SKU)) {
-        const message = "Invalid SKU";
+        const message = "Invalid SKU.";
         throw new Error(message);
     }
     const id = SKUToID.SKUToId(SKU);
@@ -11,7 +11,7 @@ const updateProducts = async (SKU, updatedDetails) => {
     try {
         return await updateProductsRepository.updateProducts(id, updatedDetails);
     } catch {
-        const message = "Unexpected error";
+        const message = "Unexpected error.";
         throw new Error(message);
     }
 }

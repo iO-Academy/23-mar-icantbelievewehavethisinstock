@@ -5,7 +5,7 @@ const createOrder = (request, response) => {
 
     createOrdersService.createOrder(newOrder)
         .then(() => {
-            const successMessage = {"message": "Successfully placed order"};
+            const successMessage = {"message": "Successfully placed order."};
             response.send(successMessage);
         })
         .catch((error) => {
