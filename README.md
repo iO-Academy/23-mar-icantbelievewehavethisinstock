@@ -237,7 +237,7 @@
         }
 }
 ```
-**NOTE: `stock_level` takes positive *and* negative numbers. **
+__NOTE: `stock_level` takes positive *and* negative numbers.__ 
 
   **Example:**
 
