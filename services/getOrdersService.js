@@ -24,7 +24,7 @@ const getOrders = async () => {
         })
         return allOrdersArray;
     } catch {
-        const message = "Unexpected error";
+        const message = "Unexpected error.";
         throw new Error(message);
     }
 };
