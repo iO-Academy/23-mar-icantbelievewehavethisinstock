@@ -388,3 +388,42 @@
       **Content:** `{"message": "Unexpected error"}`
 
 
+### Cancel an Order 
+
+* **URL**
+
+  /orders/{order_number}
+
+* **Method:**
+
+  `DELETE`
+
+* **Request Body**
+ 
+```json
+{ 
+    "order_number": "ORDER0001"
+}
+```
+
+  **Example:**
+
+  `/orders/ORDER0001`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:** <br />
+
+  ```json
+  {"message": "Successfully cancelled order."}
+  ```
+
+* **Error Response:**
+
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{"message": "Invalid order number.", "data": []}`
+
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error", "data": []}`
+
