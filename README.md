@@ -118,7 +118,7 @@
 }
 ```
 
-  **Example:**
+* **Example:**
 
   `/products/ICBWHTIS0010`
 
@@ -153,7 +153,7 @@
 
   `DELETE`
 
-  **Example:**
+* **Example:**
 
   `/products/ICBWHTIS0004`
 
@@ -186,7 +186,7 @@
 
   `GET`
 
-  **Example:**
+* **Example:**
 
   `/products/ICBWHTIS0009`
 
@@ -239,7 +239,7 @@
 ```
 __NOTE: `stock_level` takes positive *and* negative numbers.__ 
 
-  **Example:**
+* **Example:**
 
   `/update/ICBWHTIS0004`
 
@@ -332,7 +332,7 @@ __NOTE: `stock_level` takes positive *and* negative numbers.__
 
   `DELETE`
 
-  **Example:**
+* **Example:**
 
   `/orders/ORDER0001`
 
