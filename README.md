@@ -316,3 +316,72 @@
   * **Code:** 500 SERVER ERROR <br />
   **Content:** `{"message": "Unexpected error"}`
 
+
+### Place an Order
+
+* **URL**
+
+  /orders
+
+* **Method:**
+
+  `PUT`
+
+* **URL Params**
+
+  **Required:**
+
+  There are no required URL params
+
+  **Optional:**
+
+  There are no optional URL params
+
+  * **Body Data**
+ 
+  ```json
+  { 
+    "order": {
+        "order_number": "ORDER0001",
+        "email_address": "jeff@amazeon.com",
+        "shipping_address": {
+            "customer_name": "Jeff Bayzos",
+            "address_line_1": "1 Jeff Street",
+            "town_city": "Jeffsville",
+            "postcode": "J3 3FF"
+        },
+        "products": [
+            {
+                "name": "Odd Socks",
+                "SKU": "ICBWHTIS0001",
+                "quantity": 3
+            },
+            {
+                "name": "Blunt Pencils",
+                "SKU": "ICBWHTIS0002",
+                "quantity": 3
+            }
+        ]
+    }
+  }
+  ```
+
+* **Success Response:**
+
+    * **Code:** 201 CREATED<br />
+      **Content:** <br />
+
+  ```json
+    {"message": "Successfully placed order"}
+  ```
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+  **Content:** `{"message": "Invalid order number - Already exists in database", "data": []}`
+               `{"message": "Not enough stock of Blunt Pencils", "data": []}`
+
+  * **Code:** 500 SERVER ERROR <br />
+  **Content:** `{"message": "Unexpected error"}`
+
+
