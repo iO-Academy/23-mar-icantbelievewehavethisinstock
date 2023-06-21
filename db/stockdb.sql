@@ -51,8 +51,8 @@ LOCK TABLES `orders` WRITE;
 
 INSERT INTO `orders` (`id`, `order_number`, `customer_email`, `customer_name`, `address_line_1`, `address_line_2`, `address_line_3`, `town_city`, `postcode`, `country`, `products`, `order_open`, `order_shipped`, `order_cancelled`)
 VALUES
-	(1,'ORDER0001','jeff@amazon.com','Jeff Bezos','1 Jeff Street',NULL,NULL,'Jeffsville','J3 3FF','United Kingdom','(Odd Socks:3),(Blunt Pencils:4)',1,0,0),
-	(3,'ORDER0002','jeff@amazon.com','Jeff Bezos','1 Jeff Street',NULL,NULL,'Jeffsville','J3 3FF','United Kingdom','(Odd Socks:1),(Blunt Pencils:1)',1,0,0);
+	(1,'ORDER0001','jeff@amazeon.com','Jeff Bayzos','1 Jeff Street',NULL,NULL,'Jeffsville','J3 3FF','United Kingdom','(Odd Socks:3),(Blunt Pencils:4)',1,0,0),
+	(3,'ORDER0002','jeff@amazeon.com','Jeff Bayzos','1 Jeff Street',NULL,NULL,'Jeffsville','J3 3FF','United Kingdom','(Odd Socks:1),(Blunt Pencils:1)',1,0,0);
 
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
