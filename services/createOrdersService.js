@@ -4,7 +4,6 @@ const validateOrderNumber = require('../functions/validate-order-number');
 const validateEmailAddress = require('../functions/validate-email-address');
 const validateShippingAddress = require('../functions/validate-shipping-address');
 const getAllStockLevels = require('../repositories/getAllStockLevelsRepository');
-const findProductId = require('../functions/findProductId')
 
 const createOrder = async (newOrder) => {
     if(!validateOrderNumber.validateOrderNumber(newOrder.order.order_number)) {
@@ -28,15 +27,19 @@ const createOrder = async (newOrder) => {
     newOrder.order.products.forEach((product) => {
         const id = SKUtoID.SKUToId(product.SKU);
         const orderQuantity = product.quantity;
+        const productName = product.name;
+        const findProductId = (element) => {
+            return element.id === id;
+        };
         const productIndex = allStockLevels.findIndex(findProductId)
         const currentStockLevel = allStockLevels[productIndex].stock_level
         const newStockLevel = currentStockLevel - orderQuantity
 
         if (newStockLevel < 0) {
-            const message = `Not enough stock of ${product.name}`;
+            const message = `Not enough stock of ${productName}`;
             throw new Error(message);
         } else {
-            const stringForDb = `(${id}:${orderQuantity})`
+            const stringForDb = `(${productName}:${orderQuantity})`
             productsStringForDb.push(stringForDb);
         }
     })

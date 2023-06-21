@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.11.3-MariaDB-1:10.11.3+maria~ubu2204)
 # Database: stock
-# Generation Time: 2023-06-21 09:01:47 +0000
+# Generation Time: 2023-06-21 09:41:43 +0000
 # ************************************************************
 
 
@@ -44,14 +44,15 @@ CREATE TABLE `orders` (
   `order_shipped` int(1) unsigned NOT NULL DEFAULT 0,
   `order_cancelled` int(1) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 
 INSERT INTO `orders` (`id`, `order_number`, `customer_email`, `customer_name`, `address_line_1`, `address_line_2`, `address_line_3`, `town_city`, `postcode`, `country`, `products`, `order_open`, `order_shipped`, `order_cancelled`)
 VALUES
-	(1,'ORDER0001','jeff@amazon.com','Jeff Bezos','1 Jeff Street',NULL,NULL,'Jeffsville','J3 3FF','United Kingdom','(1:3),(2:4)',1,0,0);
+	(1,'ORDER0001','jeff@amazon.com','Jeff Bezos','1 Jeff Street',NULL,NULL,'Jeffsville','J3 3FF','United Kingdom','(Odd Socks:3),(Blunt Pencils:4)',1,0,0),
+	(3,'ORDER0002','jeff@amazon.com','Jeff Bezos','1 Jeff Street',NULL,NULL,'Jeffsville','J3 3FF','United Kingdom','(Odd Socks:1),(Blunt Pencils:1)',1,0,0);
 
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -76,8 +77,8 @@ LOCK TABLES `products` WRITE;
 
 INSERT INTO `products` (`id`, `SKU`, `stock_level`, `name`, `price`)
 VALUES
-	(1,'ICBWHTIS0001',44,'Odd Socks',125),
-	(2,'ICBWHTIS0002',33,'Blunt Pencils',1200),
+	(1,'ICBWHTIS0001',42,'Odd Socks',125),
+	(2,'ICBWHTIS0002',31,'Blunt Pencils',1200),
 	(3,'ICBWHTIS0003',22,'Widgets',2300),
 	(4,'ICBWHTIS0004',99,'Sharp Pencils',1199),
 	(5,'ICBWHTIS0005',1,'Ferret',500),

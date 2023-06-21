@@ -2,7 +2,6 @@ const dbService = require('../db/dbService');
 const updateStockLevels = require('./updateStockLevelsRepository');
 const SKUToId = require("../functions/sku-to-id");
 const getAllStockLevels = require("./getAllStockLevelsRepository");
-const findProductId = require('../functions/findProductId')
 
 const createOrder = async (newOrder, productsStringForDatabase) => {
     const dbConnection = await dbService.createConnection();
@@ -40,6 +39,9 @@ const createOrder = async (newOrder, productsStringForDatabase) => {
             products.forEach((product) => {
                 const id = SKUToId.SKUToId(product.SKU);
                 const quantity = product.quantity;
+                const findProductId = (element) => {
+                    return element.id === id;
+                };
                 const positionInAllStockLevels = allStockLevels.findIndex(findProductId);
                 const currentStockLevel = allStockLevels[positionInAllStockLevels].stock_level;
                 const newStockLevel = currentStockLevel - quantity;
