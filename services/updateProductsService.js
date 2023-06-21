@@ -1,5 +1,6 @@
 const updateProductsRepository = require('../repositories/updateProductsRepository');
 const SKUToID = require('../functions/sku-to-id')
+const validateSKU = require('../functions/validate-sku')
 
 const updateProducts = async (SKU, updatedDetails) => {
     if(!validateSKU.validateSKU(SKU)) {

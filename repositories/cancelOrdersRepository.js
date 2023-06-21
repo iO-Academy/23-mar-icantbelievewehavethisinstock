@@ -3,6 +3,13 @@ const dbService = require('../db/dbService');
 const cancelOrders = async (orderNumber) => {
     const connection = await dbService.createConnection();
 
+    const orderNumbersInDb = await connection.query('SELECT `order_number` FROM `orders`;');
+    const orderNumbersArray = await orderNumbersInDb.map((order) => order.order_number);
+    if (!orderNumbersArray.includes(orderNumber)) {
+        const error = "This order doesn't exist.";
+        throw new Error(error);
+    }
+
     const getProductsFromOrderSQL = 'SELECT `products`, `order_open`, `order_cancelled` FROM `orders` WHERE `order_number` = ?';
     const getProductsFromOrdersValues = [orderNumber];
     const getProductsAndOrderStatusFromOrderNumber = await connection.query(getProductsFromOrderSQL, getProductsFromOrdersValues);
@@ -10,7 +17,7 @@ const cancelOrders = async (orderNumber) => {
     const orderOpen = getProductsAndOrderStatusFromOrderNumber[0].order_open;
     const orderCancelled = getProductsAndOrderStatusFromOrderNumber[0].order_cancelled;
 
-    if(!orderOpen) {
+    if (!orderOpen) {
         const message = "This order isn't open.";
         throw new Error(message);
     } else if (orderCancelled) {
