@@ -5,6 +5,7 @@ const addProducts = async (newProduct) => {
     const dbConnection = await dbService.createConnection();
     const namesInDb = await dbConnection.query('SELECT `name` FROM `products`;');
     const namesResult = await namesInDb.map(name => name.name);
+
     if(namesResult.includes(newProduct.name)) {
         const message = "Invalid entry - Already exists in database";
         throw new Error(message);
