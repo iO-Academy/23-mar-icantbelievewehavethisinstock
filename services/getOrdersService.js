@@ -1,30 +1,28 @@
-const getOrdersRepository = require('../repositories/getOrdersRepository');
+const allOrdersQueryResponse = require('../repositories/getOrdersRepository');
 
 const getOrders = async () => {
-    console.log('Service: getOrders');
     try {
-        const results = await getOrdersRepository.getOrders();
-        let resultsArray = [];
-        let eachOrderObject = {};
+        const results = await allOrdersQueryResponse.getOrders();
+        let allOrdersArray = [];
+        let productsForEachOrderObject = {};
 
         results.forEach((result) => {
-            const orderInfo = result.products.split("(").join("").split(")").join("");
-            const orderArrayHalf = orderInfo.split(",");
-            let resultsObject ={};
+            const productInfo = result.products.split("(").join("").split(")").join("");
+            const currentOrderArray = productInfo.split(",");
+            let resultsObject = {};
             const eachOrder = [];
-            const keys =["name", "quantity"];
-            orderArrayHalf.forEach((entry) => {
-                eachOrder.push(entry.split(":"));
-                eachOrderObject = eachOrder.map((innerArray) => Object.assign({}, ...innerArray.map((value, index) => ({ [keys[index]]: value}))));
-            })
+            const productsOrderKeys = ["name", "quantity"];
+            currentOrderArray.forEach((order) => {
+                eachOrder.push(order.split(":"));
+                productsForEachOrderObject = eachOrder.map((innerArray) => Object.assign({}, ...innerArray.map((value, index) => ({[productsOrderKeys[index]]: value}))));
+            });
 
             resultsObject.order_number = result.order_number;
             resultsObject.customer_email = result.customer_email;
-            resultsObject.products = eachOrderObject;
-            resultsArray.push(resultsObject);
+            resultsObject.products = productsForEachOrderObject;
+            allOrdersArray.push(resultsObject);
         })
-
-        return resultsArray;
+        return allOrdersArray;
     } catch {
         const message = "Unexpected error";
         throw new Error(message);

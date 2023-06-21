@@ -1,8 +1,6 @@
 const getOrdersService = require('../services/getOrdersService');
 
 const getOrders = (request, response) => {
-    console.log('Controller: getProducts');
-
     getOrdersService.getOrders()
         .then((result) => {
             const json = {"orders": result}
