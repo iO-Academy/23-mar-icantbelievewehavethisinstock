@@ -2,7 +2,22 @@
 
 ## API documentation
 
+***Products***
+
+-   [Get all products](#get-all-products)
+-   [Add a product](#add-a-product)
+-   [Update a product](#update-a-product)
+-   [Delete a product](#delete-a-product)
+-   [Get stock levels](#get-stock-levels)
+-   [Update stock levels](#update-stock-levels)
+
+***Orders***
+-   [Place an order](#place-an-order)
+-   [Cancel an order](#cancel-an-order)
+---
+
 ### Get all products
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -11,20 +26,6 @@
 * **Method:**
 
   `GET`
-
-* **URL Params**
-
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  **Example:**
-
-  `/products`
 
 * **Success Response:**
 
@@ -57,6 +58,7 @@
 
 
 ### Add a product
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -66,31 +68,15 @@
 
   `POST`
 
-* **URL Params**
+* **Request Body**
 
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-  
-  There are no optional URL params
-
-  * **Body Data**
-
-  **Required:**
-
-  ```json
-  {
-      "name": "Cheeseballs",
-      "stock_level": 3,
-      "price": 1 
-  }
-  ```
-
-  **Example:**
-
-  `/products`
+```json
+{
+    "name": "Cheeseballs",
+    "stock_level": 3,
+    "price": 1 
+}
+```
 
 * **Success Response:**
 
@@ -110,6 +96,7 @@
       **Content:** `{"message": "Unexpected error", "data": []}`
 
 ### Update a product
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -119,29 +106,19 @@
 
   `PUT`
 
-* **URL Params**
+* **Request Body**
 
-  **Required:**
+```json
+{
+    "SKU": "ICBWHTIS0010",
+    "updatedData": {
+        "name": "Sky Hooks",        
+        "price": 1
+    }
+}
+```
 
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  * **Body Data**
- 
-  ```json
-  {
-      "SKU": "ICBWHTIS0010",
-      "updatedData": {
-          "name": "Sky Hooks",        
-          "price": 1
-      }
-  }
-  ```
-
-  **Example:**
+* **Example:**
 
   `/products/ICBWHTIS0010`
 
@@ -162,10 +139,11 @@
     * **Code:** 500 SERVER ERROR <br />
       **Content:** `{"message": "Unexpected error", "data": []}`
 
-**NOTE: You can optionally update more than one field per request**
+**NOTE: You can optionally update more than one field per request.**
 
 
 ### Delete a product
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -175,25 +153,7 @@
 
   `DELETE`
 
-* **URL Params**
-
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  * **Body Data**
- 
-  ```json
-  { 
-      "SKU": "ICBWHTIS0004"
-  }
-  ```
-
-  **Example:**
+* **Example:**
 
   `/products/ICBWHTIS0004`
 
@@ -216,6 +176,7 @@
 
 
 ### Get stock levels
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -225,17 +186,7 @@
 
   `GET`
 
-* **URL Params**
-
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  **Example:**
+* **Example:**
 
   `/products/ICBWHTIS0009`
 
@@ -258,13 +209,14 @@
 * **Error Response:**
 
     * **Code:** 400 BAD REQUEST <br />
-      **Content:** `{"message": "Invalid SKU", "data": []}`* 
+      **Content:** `{"message": "Invalid SKU.", "data": []}`* 
 
     * **Code:** 500 SERVER ERROR <br />
-      **Content:** `{"message": "Unexpected error", "data": []}`
+      **Content:** `{"message": "Unexpected error.", "data": []}`
 
 
 ### Update stock levels
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -274,30 +226,16 @@
 
   `PUT`
 
-* **URL Params**
+* **Request Body**
 
-  **Required:**
+```json
+{ 
+    "stock_level": 3
+}
+```
+__NOTE: `stock_level` takes positive *and* negative numbers.__ 
 
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  * **Body Data**
- 
-  ```json
-  { 
-     "SKU": "SKU",
-        {
-             "name": "Blunt Pencils",
-             "stock_level": 3
-        }
-  }
-  ```
-**NOTE: `stock_level` takes positive *and* negative numbers **
-
-  **Example:**
+* **Example:**
 
   `/update/ICBWHTIS0004`
 
@@ -313,13 +251,14 @@
 * **Error Response:**
 
     * **Code:** 400 BAD REQUEST <br />
-      **Content:** `{"message": "Invalid SKU", "data": []}`
+      **Content:** `{"message": "Invalid SKU.", "data": []}`
 
     * **Code:** 500 SERVER ERROR <br />
-      **Content:** `{"message": "Unexpected error"}`
+      **Content:** `{"message": "Unexpected error."}`
 
 
 ### Place an Order
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -329,21 +268,11 @@
 
   `PUT`
 
-* **URL Params**
+* **Request Body**
 
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  * **Body Data**
- 
-  ```json
-  { 
-     "order": {
+```json
+{ 
+    "order": {
         "order_number": "ORDER0001",
         "email_address": "jeff@amazeon.com",
         "shipping_address": {
@@ -365,8 +294,8 @@
             }
         ]
     }
-  }
-  ```
+}
+```
 
 * **Success Response:**
 
@@ -374,17 +303,49 @@
       **Content:** <br />
 
   ```json
-  {"message": "Successfully placed order"}
+  {"message": "Successfully placed order."}
   ```
 
 * **Error Response:**
 
     * **Code:** 400 BAD REQUEST <br />
       **Content:** 
-      `{"message": "Invalid order number - Already exists in database", "data": []}`
-      `{"message": "Not enough stock of Blunt Pencils", "data": []}`
+      `{"message": "Invalid order number - Already exists in database.", "data": []}`
+      `{"message": "Not enough stock of Blunt Pencils.", "data": []}`
 
     * **Code:** 500 SERVER ERROR <br />
-      **Content:** `{"message": "Unexpected error"}`
+      **Content:** `{"message": "Unexpected error."}`
 
+
+### Cancel an Order 
+[Back to top](#api-documentation)
+
+* **URL**
+
+  /orders/{order_number}
+
+* **Method:**
+
+  `DELETE`
+
+* **Example:**
+
+  `/orders/ORDER0001`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:** <br />
+
+  ```json
+  {"message": "Successfully cancelled order."}
+  ```
+
+* **Error Response:**
+
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{"message": "Invalid order number.", "data": []}`
+
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error.", "data": []}`
 
