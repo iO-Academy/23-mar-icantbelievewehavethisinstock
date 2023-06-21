@@ -7,16 +7,16 @@ const cancelOrders = (request, response) => {
         .then(() => {
             const message = {"message": "Successfully cancelled order."};
             response.send(message);
-    })
-    .catch((error) => {
-        let status = 500;
-        const message = {"message": error.message, "data": []};
+        })
+        .catch((error) => {
+            let status = 500;
+            const message = {"message": error.message, "data": []};
 
-        if (error.message.startsWith("Invalid")) {
-            status = 400;
-        }
-        response.status(status).send(message);
-    });
+            if (error.message.startsWith("Invalid")) {
+                status = 400;
+            }
+            response.status(status).send(message);
+        });
 }
 
 module.exports.cancelOrders = cancelOrders;
