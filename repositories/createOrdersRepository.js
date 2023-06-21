@@ -42,8 +42,8 @@ const createOrder = async (newOrder, productsStringForDatabase) => {
                 const findProductId = (element) => {
                     return element.id === productId;
                 };
-                const positionInAllStockLevels = allStockLevels.findIndex(findProductId);
-                const currentStockLevel = allStockLevels[positionInAllStockLevels].stock_level;
+                const productIndex = allStockLevels.findIndex(findProductId);
+                const currentStockLevel = allStockLevels[productIndex].stock_level;
                 const newStockLevel = currentStockLevel - orderQuantity;
 
                 if (newStockLevel >= 0) {
