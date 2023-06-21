@@ -1,21 +1,61 @@
 const dbService = require('../db/dbService');
+const updateStockLevels = require('./updateStockLevelsRepository');
+const SKUToId = require("../functions/sku-to-id");
+const getAllStockLevels = require("./getAllStockLevelsRepository");
 
-const createOrder = async (newOrder) => {
-    console.log('Repository: createOrder');
-    const connection = await dbService.createConnection();
+const createOrder = async (newOrder, productsStringForDatabase) => {
+    const dbConnection = await dbService.createConnection();
+    const orderNumber = newOrder.order.order_number;
+    const customerEmail = newOrder.order.email_address;
+    const customerName = newOrder.order.shipping_address.customer_name;
+    const addressLine1 = newOrder.order.shipping_address.address_line_1
+    const townCity = newOrder.order.shipping_address.town_city
+    const postcode = newOrder.order.shipping_address.postcode
+    const products = newOrder.order.products
+    let addressLine2 = null;
+    let addressLine3 = null;
 
-    const checkStockLevels = await connection.query()
-    // forEach newOrder.order.products,
-    // if name = actual product name && if quantity in db > quantity in createOrder
-    // return true or false to array
 
-    // if array does not contain false
-    const updateStockLevels = await connection.query() // Update stock levels
-    const createOrder = await connection.query() //SQL for creating order
-    // Or do both in same query
+    if (newOrder.order.shipping_address.address_line_2 !== null) {
+        addressLine2 = newOrder.order.shipping_address.address_line_2;
+    }
 
-    // How to get them to do subsequent queries?
+    if (newOrder.order.shipping_address.address_line_3 !== null) {
+        addressLine3 = newOrder.order.shipping_address.address_line_3;
+    }
+
+    const orderNumbersInDb = await dbConnection.query('SELECT `order_number` FROM `orders`;');
+    const orderNumbersArray = await orderNumbersInDb.map((order) => order.order_number);
+    if (orderNumbersArray.includes(orderNumber)) {
+        const error = "Invalid order number - Already exists in database";
+        throw new Error(error);
+    } else {
+        try {
+            const sql = 'INSERT INTO `orders` (`order_number`, `customer_email`, `customer_name`, `address_line_1`, `address_line_2`, `address_line_3`, `town_city`, `postcode`, `products`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);';
+            const values = [orderNumber, customerEmail, customerName, addressLine1, addressLine2, addressLine3, townCity, postcode, productsStringForDatabase];
+
+            const allStockLevels = await getAllStockLevels.getAllStockLevels();
+
+            products.forEach((product) => {
+                const productId = SKUToId.SKUToId(product.SKU);
+                const orderQuantity = product.quantity;
+                const findProductId = (element) => {
+                    return element.id === productId;
+                };
+                const productIndex = allStockLevels.findIndex(findProductId);
+                const currentStockLevel = allStockLevels[productIndex].stock_level;
+                const newStockLevel = currentStockLevel - orderQuantity;
+
+                if (newStockLevel >= 0) {
+                    updateStockLevels.updateStockLevels(productId, newStockLevel)
+                }
+            })
+            return await dbConnection.query(sql, values);
+        } catch {
+            const message = "There was an error processing your order";
+            throw new Error(message);
+        }
+    }
 }
 
-// order field of orders will probably have to be json, format "orders": [{"SKU":"string","quantity":"number"},{...}]
-// json.stringify() to turn to string to store in DB. json.parse() to turn back into json
+module.exports.createOrder = createOrder;

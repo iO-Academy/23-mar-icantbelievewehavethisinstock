@@ -1,8 +1,6 @@
 const getProductsRepository = require('../repositories/getProductsRepository');
 
 const getProducts = async () => {
-    console.log('Service: getProducts');
-
     try {
         return await getProductsRepository.getProducts();
     } catch {
