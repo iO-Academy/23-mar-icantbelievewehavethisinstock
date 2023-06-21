@@ -134,10 +134,10 @@
   ```json
   {
       "SKU": "ICBWHTIS0010",
-          "updatedData": {
-              "name": "Sky Hooks",        
-              "price": 1
-          }
+      "updatedData": {
+          "name": "Sky Hooks",        
+          "price": 1
+      }
   }
   ```
 
@@ -380,8 +380,9 @@
 * **Error Response:**
 
     * **Code:** 400 BAD REQUEST <br />
-      **Content:** `{"message": "Invalid order number - Already exists in database", "data": []}`
-                   `{"message": "Not enough stock of Blunt Pencils", "data": []}`
+      **Content:** 
+      `{"message": "Invalid order number - Already exists in database", "data": []}`
+      `{"message": "Not enough stock of Blunt Pencils", "data": []}`
 
     * **Code:** 500 SERVER ERROR <br />
       **Content:** `{"message": "Unexpected error"}`
