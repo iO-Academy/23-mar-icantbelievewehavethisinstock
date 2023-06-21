@@ -15,6 +15,7 @@ const createOrder = async (newOrder) => {
         const message = "Invalid Email Address";
         throw new Error(message);
     }
+
     if(!validateShippingAddress.validateShippingAddress(newOrder.order.shipping_address)) {
         const message = "Invalid Shipping Address";
         throw new Error(message);
@@ -36,7 +37,7 @@ const createOrder = async (newOrder) => {
         const newStockLevel = currentStockLevel - orderQuantity
 
         if (newStockLevel < 0) {
-            const message = `Not enough stock of ${productName}`;
+            const message = `Not enough stock of ${productName}.`;
             throw new Error(message);
         } else {
             const stringForDb = `(${productName}:${orderQuantity})`
@@ -50,7 +51,7 @@ const createOrder = async (newOrder) => {
         return await createOrdersRepository.createOrder(newOrder, productsStringForDb);
     } catch (error) {
         if (!error.message.startsWith("Invalid")) {
-            const message = "Unexpected error";
+            const message = "Unexpected error.";
             throw new Error(message);
         }
         throw error;
