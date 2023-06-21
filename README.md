@@ -8,7 +8,7 @@
 -   [Add a product](#add-a-product)
 -   [Update a product](#update-a-product)
 -   [Delete a product](#delete-a-product)
--   [Get stock levels](#get-specified-product)
+-   [Get stock levels](#get-stock-levels)
 -   [Update stock levels](#update-stock-levels)
 
 ***Orders***
