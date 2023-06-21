@@ -10,7 +10,7 @@ const cancelOrders = async (orderNumber) => {
     try {
         return await cancelOrdersRepository.cancelOrders(orderNumber);
     } catch (error) {
-        if (error.message === 'This order isn\'t open' || error.message === 'This order has already been cancelled') {
+        if (error.message === "This order isn't open" || error.message === "This order has already been cancelled") {
             throw error
         } else {
             const message = "Unexpected error";
