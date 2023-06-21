@@ -32,6 +32,7 @@ DROP TABLE IF EXISTS `orders`;
 
 CREATE TABLE `orders` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `order_number` varchar(255) NOT NULL,
   `customer_email` varchar(255) NOT NULL,
   `customer_name` varchar(255) NOT NULL,
   `address_line_1` varchar(255) NOT NULL,
@@ -40,7 +41,7 @@ CREATE TABLE `orders` (
   `town_city` varchar(255) NOT NULL,
   `postcode` varchar(255) NOT NULL,
   `country` varchar(255) DEFAULT 'United Kingdom',
-  `order` varchar(511) NOT NULL,
+  `products` varchar(511) NOT NULL,
   `order_open` int(1) unsigned NOT NULL DEFAULT 1,
   `order_shipped` int(1) unsigned NOT NULL DEFAULT 0,
   `order_cancelled` int(1) unsigned NOT NULL DEFAULT 0,

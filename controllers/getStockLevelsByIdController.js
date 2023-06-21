@@ -1,9 +1,9 @@
-const getStockLevelsService = require('../services/getStockLevelsService');
+const getStockLevelsByIdService = require('../services/getStockLevelsByIdService');
 
-const getStockLevels = (request, response) => {
+const getStockLevelsById = (request, response) => {
     const SKU = request.params.SKU;
 
-    getStockLevelsService.getStockLevels(SKU)
+    getStockLevelsByIdService.getStockLevelsById(SKU)
         .then((result) => {
             const json = {"product": result};
             response.send(json);
@@ -19,4 +19,4 @@ const getStockLevels = (request, response) => {
         })
 }
 
-module.exports.getStocksLevels = getStockLevels;
+module.exports.getStockLevelsById = getStockLevelsById;

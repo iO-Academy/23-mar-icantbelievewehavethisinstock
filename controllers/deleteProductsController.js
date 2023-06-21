@@ -2,6 +2,7 @@ const deleteProductsService = require('../services/deleteProductsService');
 
 const deleteProducts = (request, response) => {
     const SKU = request.params.SKU;
+
     deleteProductsService.deleteProducts(SKU)
         .then(() => {
             const message = {"message": "Successfully deleted product."};

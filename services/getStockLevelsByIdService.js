@@ -1,8 +1,8 @@
-const getStockLevelsRepository = require('../repositories/getStockLevelsRepository');
+const getStockLevelsByIdRepository = require('../repositories/getStockLevelsByIdRepository');
 const SKUToID = require("../functions/sku-to-id");
 const validateSKU = require("../functions/validate-sku");
 
-const getStockLevels = async (SKU) => {
+const getStockLevelsById = async (SKU) => {
     if(!validateSKU.validateSKU(SKU)) {
         const message = "Invalid SKU";
         throw new Error(message);
@@ -11,11 +11,11 @@ const getStockLevels = async (SKU) => {
     const id = SKUToID.SKUToId(SKU);
 
     try {
-        return await getStockLevelsRepository.getStockLevels(id);
+        return await getStockLevelsByIdRepository.getStockLevelsById(id);
     } catch {
         const message = "Unexpected error";
         throw new Error(message);
     }
 }
 
-module.exports.getStockLevels = getStockLevels;
+module.exports.getStockLevelsById = getStockLevelsById;

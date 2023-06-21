@@ -1,7 +1,7 @@
 const updateStockLevelsRepository = require('../repositories/updateStockLevelsRepository');
 const SKUToID = require('../functions/sku-to-id');
 const validateSKU = require('../functions/validate-sku');
-const getStockLevels = require('../services/getStockLevelsService');
+const getStockLevels = require('./getStockLevelsByIdService');
 
 const updateStockLevels = async (SKU, updatedStockLevels) => {
     let message = "Unexpected Error";

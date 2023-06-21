@@ -4,6 +4,7 @@ const validateOrderNumber = require('../functions/validate-order-number');
 const validateEmailAddress = require('../functions/validate-email-address');
 const validateShippingAddress = require('../functions/validate-shipping-address');
 const getAllStockLevels = require('../repositories/getAllStockLevelsRepository');
+const findProductId = require('../functions/findProductId')
 
 const createOrder = async (newOrder) => {
     if(!validateOrderNumber.validateOrderNumber(newOrder.order.order_number)) {
@@ -15,39 +16,35 @@ const createOrder = async (newOrder) => {
         const message = "Invalid Email Address";
         throw new Error(message);
     }
-
     if(!validateShippingAddress.validateShippingAddress(newOrder.order.shipping_address)) {
         const message = "Invalid Shipping Address";
         throw new Error(message);
     }
 
-    const allStockLevels = await getAllStockLevels.getStockAllStockLevels();
+    const allStockLevels = await getAllStockLevels.getAllStockLevels();
 
-    let productsStringForDatabase = [];
+    let productsStringForDb = [];
 
     newOrder.order.products.forEach((product) => {
         const id = SKUtoID.SKUToId(product.SKU);
-        const quantity = product.quantity;
-        const productWithId = (element) => {
-            return element.id === id
-        }
-        const positionInAllStockLevels = allStockLevels.findIndex(productWithId)
-        const currentStockLevel = allStockLevels[positionInAllStockLevels].stock_level
-        const newStockAmount = currentStockLevel - quantity
+        const orderQuantity = product.quantity;
+        const productIndex = allStockLevels.findIndex(findProductId)
+        const currentStockLevel = allStockLevels[productIndex].stock_level
+        const newStockLevel = currentStockLevel - orderQuantity
 
-        if (newStockAmount < 0) {
+        if (newStockLevel < 0) {
             const message = `Not enough stock of ${product.name}`;
             throw new Error(message);
         } else {
-            const stringForDb = `(${id}:${quantity})`
-            productsStringForDatabase.push(stringForDb);
+            const stringForDb = `(${id}:${orderQuantity})`
+            productsStringForDb.push(stringForDb);
         }
     })
 
-    productsStringForDatabase = productsStringForDatabase.toString();
+    productsStringForDb = productsStringForDb.toString();
 
     try {
-        return await createOrdersRepository.createOrder(newOrder, productsStringForDatabase);
+        return await createOrdersRepository.createOrder(newOrder, productsStringForDb);
     } catch (error) {
         if (!error.message.startsWith("Invalid")) {
             const message = "Unexpected error";
