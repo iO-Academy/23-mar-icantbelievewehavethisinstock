@@ -17,6 +17,7 @@
 ---
 
 ### Get all products
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -57,6 +58,7 @@
 
 
 ### Add a product
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -94,6 +96,7 @@
       **Content:** `{"message": "Unexpected error", "data": []}`
 
 ### Update a product
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -140,6 +143,7 @@
 
 
 ### Delete a product
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -180,6 +184,7 @@
 
 
 ### Get stock levels
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -219,6 +224,7 @@
 
 
 ### Update stock levels
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -264,6 +270,7 @@
 
 
 ### Place an Order
+[Back to top](#api-documentation)
 
 * **URL**
 
@@ -323,6 +330,7 @@
 
 
 ### Cancel an Order 
+[Back to top](#api-documentation)
 
 * **URL**
 
