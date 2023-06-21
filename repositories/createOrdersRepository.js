@@ -37,17 +37,17 @@ const createOrder = async (newOrder, productsStringForDatabase) => {
             const allStockLevels = await getAllStockLevels.getAllStockLevels();
 
             products.forEach((product) => {
-                const id = SKUToId.SKUToId(product.SKU);
-                const quantity = product.quantity;
+                const productId = SKUToId.SKUToId(product.SKU);
+                const orderQuantity = product.quantity;
                 const findProductId = (element) => {
-                    return element.id === id;
+                    return element.id === productId;
                 };
                 const positionInAllStockLevels = allStockLevels.findIndex(findProductId);
                 const currentStockLevel = allStockLevels[positionInAllStockLevels].stock_level;
-                const newStockLevel = currentStockLevel - quantity;
+                const newStockLevel = currentStockLevel - orderQuantity;
 
                 if (newStockLevel >= 0) {
-                    updateStockLevels.updateStockLevels(id, newStockLevel)
+                    updateStockLevels.updateStockLevels(productId, newStockLevel)
                 }
             })
             return await dbConnection.query(sql, values);
