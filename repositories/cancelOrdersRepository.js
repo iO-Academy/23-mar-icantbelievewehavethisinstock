@@ -11,10 +11,10 @@ const cancelOrders = async (orderNumber) => {
     const orderCancelled = getProductsAndOrderStatusFromOrderNumber[0].order_cancelled;
 
     if(!orderOpen) {
-        const message = "This order isn't open";
+        const message = "This order isn't open.";
         throw new Error(message);
     } else if (orderCancelled) {
-        const message = "This order has already been cancelled";
+        const message = "This order has already been cancelled.";
         throw new Error(message);
     } else {
         const orderQueryNoParentheses = getProductsAndOrderStatusFromOrderNumber[0].products.split("(").join("").split(")").join("");
@@ -39,7 +39,7 @@ const cancelOrders = async (orderNumber) => {
         connection.query(cancelOrdersSQL, cancelOrdersValues);
         const resetStockLevelSQL = 'UPDATE `products` SET `stock_level` = CASE `name` ' + whenClause + ' ELSE `stock_level` END WHERE `name` IN (' + whereInClause + ');';
         connection.query(resetStockLevelSQL);
-        return "Successfully cancelled order";
+        return "Successfully cancelled order.";
     }
 }
 

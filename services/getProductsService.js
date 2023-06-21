@@ -4,7 +4,7 @@ const getProducts = async () => {
     try {
         return await getProductsRepository.getProducts();
     } catch {
-        const message = "Unexpected error";
+        const message = "Unexpected error.";
         throw new Error(message);
     }
 };

@@ -4,10 +4,10 @@ const validateSKU = require('../functions/validate-sku');
 const getStockLevels = require('./getStockLevelsByIdService');
 
 const updateStockLevels = async (SKU, updatedStockLevels) => {
-    let message = "Unexpected Error";
+    let message = "Unexpected Error.";
 
     if (!validateSKU.validateSKU(SKU)) {
-        message = "Invalid SKU";
+        message = "Invalid SKU.";
         throw new Error(message);
     }
 
@@ -27,7 +27,7 @@ const updateStockLevels = async (SKU, updatedStockLevels) => {
             throw new Error(message);
         }
     } else {
-        message = "Not enough stock";
+        message = "Not enough stock.";
         throw new Error(message);
     }
 }

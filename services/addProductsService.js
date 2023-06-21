@@ -2,7 +2,7 @@ const addProductsRepository = require('../repositories/addProductsRepository');
 
 const addProducts = async (newProduct) => {
     if (!newProduct.name || !newProduct.stock_level || !newProduct.price) {
-        const missingInfoMessage = "Invalid information supplied";
+        const missingInfoMessage = "Invalid information supplied.";
         throw new Error(missingInfoMessage);
     }
 
@@ -12,7 +12,7 @@ const addProducts = async (newProduct) => {
         if (Error.message.startsWith('Invalid')) {
             throw Error;
         } else {
-            const dbErrorMessage = "Unable to connect to database";
+            const dbErrorMessage = "Unable to connect to database.";
             throw new Error(dbErrorMessage);
         }
     }
