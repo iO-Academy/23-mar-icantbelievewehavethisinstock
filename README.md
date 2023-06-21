@@ -230,11 +230,7 @@
 
 ```json
 { 
-    "SKU": "ICBWHTIS0002",
-        {
-           "name": "Blunt Pencils",
-           "stock_level": 3
-        }
+    "stock_level": 3
 }
 ```
 __NOTE: `stock_level` takes positive *and* negative numbers.__ 
