@@ -230,7 +230,7 @@
 
 ```json
 { 
-    "SKU": "SKU",
+    "SKU": "ICBWHTIS0002",
         {
            "name": "Blunt Pencils",
            "stock_level": 3
