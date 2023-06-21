@@ -332,14 +332,6 @@
 
   `DELETE`
 
-* **Request Body**
- 
-```json
-{ 
-    "order_number": "ORDER0001"
-}
-```
-
   **Example:**
 
   `/orders/ORDER0001`
