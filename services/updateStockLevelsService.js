@@ -11,7 +11,7 @@ const updateStockLevels = async (SKU, updatedStockLevels) => {
         throw new Error(message);
     }
 
-    const currentStockLevels = await getStockLevels.getStockLevels(SKU);
+    const currentStockLevels = await getStockLevels.getStockLevelsById(SKU);
     const currentStockLevelsNumber = currentStockLevels[0].stock_level;
 
     const updatedStockLevelNumber = updatedStockLevels.stock_level;
