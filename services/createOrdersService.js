@@ -15,6 +15,7 @@ const createOrder = async (newOrder) => {
         const message = "Invalid Email Address";
         throw new Error(message);
     }
+
     if(!validateShippingAddress.validateShippingAddress(newOrder.order.shipping_address)) {
         const message = "Invalid Shipping Address";
         throw new Error(message);
