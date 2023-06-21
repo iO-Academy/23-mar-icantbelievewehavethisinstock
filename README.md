@@ -153,14 +153,6 @@
 
   `DELETE`
 
-* **Request Body**
- 
-```json
-{ 
-    "SKU": "ICBWHTIS0004"
-}
-```
-
   **Example:**
 
   `/products/ICBWHTIS0004`
