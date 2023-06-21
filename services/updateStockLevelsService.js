@@ -12,10 +12,12 @@ const updateStockLevels = async (SKU, updatedStockLevels) => {
     }
 
     const currentStockLevels = await getStockLevels.getStockLevels(SKU);
-    const currentStockLevelsNumber = await currentStockLevels.map(stock_level => stock_level.stock_level);
+    const currentStockLevelsNumber = currentStockLevels[0].stock_level;
 
-    const updatedStockLevelNumber = Number(updatedStockLevels.updated_fields.stock_level);
-    const newStockAmount = currentStockLevelsNumber[0] + updatedStockLevelNumber;
+    const updatedStockLevelNumber = updatedStockLevels.stock_level;
+
+    const newStockAmount = currentStockLevelsNumber + updatedStockLevelNumber;
+
     const id = SKUToID.SKUToId(SKU);
 
     if (newStockAmount >= 0) {

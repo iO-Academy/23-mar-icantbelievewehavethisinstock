@@ -1,38 +1,11 @@
 const validateShippingAddress = (shippingAddress) => {
-    let validShippingAddress = false;
-    let validateArray = [];
 
     const validPostcodeRegex = /^[a-z]{1,2}\d[a-z\d]?\s*\d[a-z]{2}$/i;
 
-    if (typeof shippingAddress.customer_name === 'string') {
-        validateArray.push(1);
-    } else {
-        validateArray.push(0);
-    }
-
-    if (typeof shippingAddress.address_line_1 === 'string') {
-        validateArray.push(1);
-    } else {
-        validateArray.push(0);
-    }
-
-    if (typeof shippingAddress.town_city === 'string') {
-        validateArray.push(1);
-    } else {
-        validateArray.push(0);
-    }
-
-    if (shippingAddress.postcode.match(validPostcodeRegex)) {
-        validateArray.push(1);
-    } else {
-        validateArray.push(0);
-    }
-
-    if (!validateArray.includes(0)) {
-        validShippingAddress = true;
-    }
-
-    return validShippingAddress;
+    return ((shippingAddress.shippingAddress.customer_name !== "" && shippingAddress.shippingAddress.customer_name !== null)
+        && (shippingAddress.shippingAddress.address_line_1 !== "" && shippingAddress.shippingAddress.customer_name !== null)
+        && (shippingAddress.shippingAddress.town_city !== "" && shippingAddress.shippingAddress.customer_name !== null)
+        && shippingAddress.shippingAddress.postcode.match(validPostcodeRegex));
 }
 
 module.exports.validateShippingAddress = validateShippingAddress;
