@@ -31,27 +31,30 @@
     * **Code:** 200 <br />
       **Content:** <br />
 
-```json
-{
-  "products": [
-      { "id": 1,
-        "SKU": "ICBWHTIS0001",
-        "name": "Odd Socks",
-        "price": 125
-      },
-      { "id": 2,
-        "SKU": "ICBWHTIS0002",
-        "name": "Blunt Pencils",
-        "price": 1200
-      }
-  ]
-}
-```
+  ```json
+  {
+     "products": [
+        { 
+            "id": 1,
+            "SKU": "ICBWHTIS0001",
+            "name": "Odd Socks",
+            "price": 125
+        },
+        { 
+            "id": 2,
+            "SKU": "ICBWHTIS0002",
+            "name": "Blunt Pencils",
+            "price": 1200
+        }
+    ]
+  }
+  ```
 
 * **Error Response:**
 
     * **Code:** 500 SERVER ERROR <br />
       **Content:** `{"message": "Unexpected error", "data": []}`
+
 
 ### Add a product
 
@@ -69,24 +72,21 @@
 
   There are no required URL params
 
-
   **Optional:**
   
   There are no optional URL params
 
   * **Body Data**
 
-  Must be sent as JSON with the correct headers
-
   **Required:**
 
-    ```json
-    {
-      "name": "String",
-      "stock_level": "Number",
-      "price": "Number"
-    }
-    ```
+  ```json
+  {
+      "name": "Cheeseballs",
+      "stock_level": 3,
+      "price": 1 
+  }
+  ```
 
   **Example:**
 
@@ -94,7 +94,7 @@
 
 * **Success Response:**
 
-    * **Code:** 201 CREATED <br />
+    * **Code:** 201 CREATED<br />
       **Content:** <br />
 
   ```json
@@ -133,17 +133,17 @@
  
   ```json
   {
-    "SKU": "SKU",
-    "updatedData":  {
-        "name": "string",        
-        "price": "number"
-    }
-   }
+      "SKU": "ICBWHTIS0010",
+          "updatedData": {
+              "name": "Sky Hooks",        
+              "price": 1
+          }
+  }
   ```
 
   **Example:**
 
-  `/products/ICBWHTIS0004`
+  `/products/ICBWHTIS0010`
 
 * **Success Response:**
 
@@ -151,18 +151,19 @@
       **Content:** <br />
 
   ```json
-    {"message": "Successfully updated product."}
+  {"message": "Successfully updated product."}
   ```
 
 * **Error Response:**
 
-  * **Code:** 400 BAD REQUEST <br />
-  **Content:** `{"message": "Invalid product data", "data": []}`
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{"message": "Invalid product data", "data": []}`
 
-  * **Code:** 500 SERVER ERROR <br />
-  **Content:** `{"message": "Unexpected error", "data": []}`
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error", "data": []}`
 
-* **NOTE: You can optionally update more than one field per request**
+**NOTE: You can optionally update more than one field per request**
+
 
 ### Delete a product
 
@@ -188,7 +189,7 @@
  
   ```json
   { 
-    "SKU": "SKU"
+      "SKU": "ICBWHTIS0004"
   }
   ```
 
@@ -207,11 +208,11 @@
 
 * **Error Response:**
 
-  * **Code:** 400 BAD REQUEST <br />
-  **Content:** `{"message": "Invalid SKU", "data": []}`
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{"message": "Invalid SKU", "data": []}`
 
-  * **Code:** 500 SERVER ERROR <br />
-  **Content:** `{"message": "Unexpected error", "data": []}`
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error", "data": []}`
 
 
 ### Get stock levels
@@ -243,24 +244,24 @@
     * **Code:** 200 <br />
       **Content:** <br />
 
-```json
-{
-  "product": 
-      { 
-        "name": "Broken Keyboard",
-        "price": 350,
-        "stock_level": 5
-      }
-}
-```
+  ```json
+  {
+     "product": 
+        { 
+            "name": "Broken Keyboard",
+            "price": 350,
+            "stock_level": 5
+        }
+  }
+  ```
 
 * **Error Response:**
 
-  * **Code:** 400 BAD REQUEST <br />
-    **Content:** `{"message": "Invalid SKU", "data": []}`* 
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{"message": "Invalid SKU", "data": []}`* 
 
-  * **Code:** 500 SERVER ERROR <br />
-    **Content:** `{"message": "Unexpected error", "data": []}`
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error", "data": []}`
 
 
 ### Update stock levels
@@ -287,13 +288,14 @@
  
   ```json
   { 
-    "SKU": "SKU",
+     "SKU": "SKU",
         {
-          "name": "String",
-          "stock_level": "Number"
+             "name": "Blunt Pencils",
+             "stock_level": 3
         }
   }
   ```
+**NOTE: `stock_level` takes positive *and* negative numbers **
 
   **Example:**
 
@@ -305,16 +307,16 @@
       **Content:** <br />
 
   ```json
-    {"message": "Successfully updated stock levels for product."}
+  {"message": "Successfully updated stock levels for product."}
   ```
 
 * **Error Response:**
 
-  * **Code:** 400 BAD REQUEST <br />
-  **Content:** `{"message": "Invalid sku", "data": []}`
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{"message": "Invalid SKU", "data": []}`
 
-  * **Code:** 500 SERVER ERROR <br />
-  **Content:** `{"message": "Unexpected error"}`
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error"}`
 
 
 ### Place an Order
@@ -341,7 +343,7 @@
  
   ```json
   { 
-    "order": {
+     "order": {
         "order_number": "ORDER0001",
         "email_address": "jeff@amazeon.com",
         "shipping_address": {
@@ -372,16 +374,16 @@
       **Content:** <br />
 
   ```json
-    {"message": "Successfully placed order"}
+  {"message": "Successfully placed order"}
   ```
 
 * **Error Response:**
 
-  * **Code:** 400 BAD REQUEST <br />
-  **Content:** `{"message": "Invalid order number - Already exists in database", "data": []}`
-               `{"message": "Not enough stock of Blunt Pencils", "data": []}`
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{"message": "Invalid order number - Already exists in database", "data": []}`
+                   `{"message": "Not enough stock of Blunt Pencils", "data": []}`
 
-  * **Code:** 500 SERVER ERROR <br />
-  **Content:** `{"message": "Unexpected error"}`
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error"}`
 
 
