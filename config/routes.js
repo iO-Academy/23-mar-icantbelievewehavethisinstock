@@ -15,7 +15,7 @@ const routes = (app) => {
     app.get('/products/:SKU', getStockLevelsByIdController.getStockLevelsById); // Get stock levels
     app.put('/update/:SKU', updateStockLevelsController.updateStockLevels); // Update stock levels
     app.post('/orders', createOrdersController.createOrder); // Add order
-    app.put('/orders/:OrderNumber', cancelOrdersController.cancelOrders) // Cancel order
+    app.put('/orders/:orderNumber', cancelOrdersController.cancelOrders) // Cancel order
 }
 
 module.exports = routes;

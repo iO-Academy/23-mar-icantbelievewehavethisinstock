@@ -1,7 +1,7 @@
 const cancelOrdersService = require('../services/cancelOrdersService')
 
 const cancelOrders = (request, response) => {
-    const orderNumber = request.params.OrderNumber;
+    const orderNumber = request.params.orderNumber;
 
     cancelOrdersService.cancelOrders(orderNumber)
         .then(() => {
