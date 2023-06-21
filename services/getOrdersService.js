@@ -4,11 +4,11 @@ const getOrders = async () => {
     try {
         const results = await allOrdersQueryResponse.getOrders();
         let allOrdersArray = [];
-        let productsForEachOrderObject = {};
 
         results.forEach((result) => {
             const productInfo = result.products.split("(").join("").split(")").join("");
             const currentOrderArray = productInfo.split(",");
+            let productsForEachOrderObject = {};
             let resultsObject = {};
             const eachOrder = [];
             const productsOrderKeys = ["name", "quantity"];
