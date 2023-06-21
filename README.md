@@ -26,20 +26,6 @@
 
   `GET`
 
-* **URL Params**
-
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  **Example:**
-
-  `/products`
-
 * **Success Response:**
 
     * **Code:** 200 <br />
@@ -80,31 +66,15 @@
 
   `POST`
 
-* **URL Params**
+* **Request Body**
 
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-  
-  There are no optional URL params
-
-  * **Body Data**
-
-  **Required:**
-
-  ```json
-  {
-      "name": "Cheeseballs",
-      "stock_level": 3,
-      "price": 1 
-  }
-  ```
-
-  **Example:**
-
-  `/products`
+```json
+{
+    "name": "Cheeseballs",
+    "stock_level": 3,
+    "price": 1 
+}
+```
 
 * **Success Response:**
 
@@ -133,27 +103,17 @@
 
   `PUT`
 
-* **URL Params**
+* **Request Body**
 
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  * **Body Data**
- 
-  ```json
-  {
-      "SKU": "ICBWHTIS0010",
-      "updatedData": {
-          "name": "Sky Hooks",        
-          "price": 1
-      }
-  }
-  ```
+```json
+{
+    "SKU": "ICBWHTIS0010",
+    "updatedData": {
+        "name": "Sky Hooks",        
+        "price": 1
+    }
+}
+```
 
   **Example:**
 
@@ -189,23 +149,13 @@
 
   `DELETE`
 
-* **URL Params**
-
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  * **Body Data**
+* **Request Body**
  
-  ```json
-  { 
-      "SKU": "ICBWHTIS0004"
-  }
-  ```
+```json
+{ 
+    "SKU": "ICBWHTIS0004"
+}
+```
 
   **Example:**
 
@@ -238,16 +188,6 @@
 * **Method:**
 
   `GET`
-
-* **URL Params**
-
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
 
   **Example:**
 
@@ -288,27 +228,17 @@
 
   `PUT`
 
-* **URL Params**
+* **Request Body**
 
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  * **Body Data**
- 
-  ```json
-  { 
-     "SKU": "SKU",
+```json
+{ 
+    "SKU": "SKU",
         {
-             "name": "Blunt Pencils",
-             "stock_level": 3
+           "name": "Blunt Pencils",
+           "stock_level": 3
         }
-  }
-  ```
+}
+```
 **NOTE: `stock_level` takes positive *and* negative numbers **
 
   **Example:**
@@ -343,21 +273,11 @@
 
   `PUT`
 
-* **URL Params**
+* **Request Body**
 
-  **Required:**
-
-  There are no required URL params
-
-  **Optional:**
-
-  There are no optional URL params
-
-  * **Body Data**
- 
-  ```json
-  { 
-     "order": {
+```json
+{ 
+    "order": {
         "order_number": "ORDER0001",
         "email_address": "jeff@amazeon.com",
         "shipping_address": {
@@ -379,8 +299,6 @@
             }
         ]
     }
-  }
-  ```
 
 * **Success Response:**
 
