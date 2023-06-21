@@ -2,6 +2,20 @@
 
 ## API documentation
 
+***Products***
+
+-   [Get all products](#get-all-products)
+-   [Add a product](#add-a-product)
+-   [Update a product](#update-a-product)
+-   [Delete a product](#delete-a-product)
+-   [Get stock levels](#get-specified-product)
+-   [Update stock levels](#update-stock-levels)
+
+***Orders***
+-   [Place an order](#place-an-order)
+-   [Cancel an order](#cancel-an-order)
+---
+
 ### Get all products
 
 * **URL**
