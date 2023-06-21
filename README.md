@@ -136,7 +136,7 @@
     * **Code:** 500 SERVER ERROR <br />
       **Content:** `{"message": "Unexpected error", "data": []}`
 
-**NOTE: You can optionally update more than one field per request**
+**NOTE: You can optionally update more than one field per request.**
 
 
 ### Delete a product
@@ -212,10 +212,10 @@
 * **Error Response:**
 
     * **Code:** 400 BAD REQUEST <br />
-      **Content:** `{"message": "Invalid SKU", "data": []}`* 
+      **Content:** `{"message": "Invalid SKU.", "data": []}`* 
 
     * **Code:** 500 SERVER ERROR <br />
-      **Content:** `{"message": "Unexpected error", "data": []}`
+      **Content:** `{"message": "Unexpected error.", "data": []}`
 
 
 ### Update stock levels
@@ -239,7 +239,7 @@
         }
 }
 ```
-**NOTE: `stock_level` takes positive *and* negative numbers **
+**NOTE: `stock_level` takes positive *and* negative numbers. **
 
   **Example:**
 
@@ -257,10 +257,10 @@
 * **Error Response:**
 
     * **Code:** 400 BAD REQUEST <br />
-      **Content:** `{"message": "Invalid SKU", "data": []}`
+      **Content:** `{"message": "Invalid SKU.", "data": []}`
 
     * **Code:** 500 SERVER ERROR <br />
-      **Content:** `{"message": "Unexpected error"}`
+      **Content:** `{"message": "Unexpected error."}`
 
 
 ### Place an Order
@@ -299,6 +299,8 @@
             }
         ]
     }
+}
+```
 
 * **Success Response:**
 
@@ -306,18 +308,18 @@
       **Content:** <br />
 
   ```json
-  {"message": "Successfully placed order"}
+  {"message": "Successfully placed order."}
   ```
 
 * **Error Response:**
 
     * **Code:** 400 BAD REQUEST <br />
       **Content:** 
-      `{"message": "Invalid order number - Already exists in database", "data": []}`
-      `{"message": "Not enough stock of Blunt Pencils", "data": []}`
+      `{"message": "Invalid order number - Already exists in database.", "data": []}`
+      `{"message": "Not enough stock of Blunt Pencils.", "data": []}`
 
     * **Code:** 500 SERVER ERROR <br />
-      **Content:** `{"message": "Unexpected error"}`
+      **Content:** `{"message": "Unexpected error."}`
 
 
 ### Cancel an Order 
@@ -357,5 +359,5 @@
       **Content:** `{"message": "Invalid order number.", "data": []}`
 
     * **Code:** 500 SERVER ERROR <br />
-      **Content:** `{"message": "Unexpected error", "data": []}`
+      **Content:** `{"message": "Unexpected error.", "data": []}`
 
