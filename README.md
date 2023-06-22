@@ -380,7 +380,7 @@ __NOTE: `stock_level` takes positive *and* negative numbers.__
 
 * **URL**
 
-  /orders/:order_number
+  /orders/:orderNumber
 
 * **Method:**
 
