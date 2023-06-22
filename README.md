@@ -35,20 +35,20 @@
 
   ```json
   {
-     "products": [
-        { 
-            "id": 1,
-            "SKU": "ICBWHTIS0001",
-            "name": "Odd Socks",
-            "price": 125
-        },
-        { 
-            "id": 2,
-            "SKU": "ICBWHTIS0002",
-            "name": "Blunt Pencils",
-            "price": 1200
-        }
-    ]
+      "products": [
+          { 
+              "id": 1,
+              "SKU": "ICBWHTIS0001",
+              "name": "Odd Socks",
+              "price": 125
+          },
+          { 
+              "id": 2,
+              "SKU": "ICBWHTIS0002",
+              "name": "Blunt Pencils",
+              "price": 1200
+          }
+      ]
   }
   ```
 
