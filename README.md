@@ -315,7 +315,7 @@ __NOTE: `stock_level` takes positive *and* negative numbers.__
       **Content:** `{"message": "Unexpected error."}`
 
 
-### Place an Order
+### Place an order
 [Back to top](#api-documentation)
 
 * **URL**
@@ -375,7 +375,7 @@ __NOTE: `stock_level` takes positive *and* negative numbers.__
       **Content:** `{"message": "Unexpected error."}`
 
 
-### Cancel an Order 
+### Cancel an order 
 [Back to top](#api-documentation)
 
 * **URL**
