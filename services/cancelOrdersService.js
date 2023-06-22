@@ -2,7 +2,7 @@ const cancelOrdersRepository = require('../repositories/cancelOrdersRepository')
 const validateOrderNumber = require("../functions/validate-order-number");
 
 const cancelOrders = async (orderNumber) => {
-    if(!validateOrderNumber.validateOrderNumber(orderNumber)) {
+    if (!validateOrderNumber.validateOrderNumber(orderNumber)) {
         const message = "Invalid order number.";
         throw new Error(message);
     }

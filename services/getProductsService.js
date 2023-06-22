@@ -7,6 +7,6 @@ const getProducts = async () => {
         const message = "Unexpected error.";
         throw new Error(message);
     }
-};
+}
 
 module.exports.getProducts = getProducts;

@@ -16,6 +16,6 @@ const addProducts = async (newProduct) => {
             throw new Error(dbErrorMessage);
         }
     }
-};
+}
 
 module.exports.addProducts = addProducts;

@@ -6,8 +6,7 @@ const createConnection = () => {
         user: dbSettings.user,
         password: dbSettings.password,
         database: dbSettings.database
-    });
+    })
 }
-
 
 module.exports.createConnection = createConnection;

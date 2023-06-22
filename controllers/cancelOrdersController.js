@@ -16,7 +16,7 @@ const cancelOrders = (request, response) => {
                 status = 400;
             }
             response.status(status).send(message);
-        });
+        })
 }
 
 module.exports.cancelOrders = cancelOrders;

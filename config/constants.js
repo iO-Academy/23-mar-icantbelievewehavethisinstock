@@ -1,6 +1,6 @@
 const constants = {
-     validSKULength: 12,
-     validOrderNumberLength: 9
+    validSKULength: 12,
+    validOrderNumberLength: 9
 }
 
 module.exports = constants;

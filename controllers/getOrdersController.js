@@ -9,7 +9,7 @@ const getOrders = (request, response) => {
         .catch((error) => {
             const message = {"message": error.message, "data": []};
             response.status(500).send(message);
-        });
+        })
 }
 
 module.exports.getOrders = getOrders;

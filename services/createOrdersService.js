@@ -6,17 +6,17 @@ const validateShippingAddress = require('../functions/validate-shipping-address'
 const getAllStockLevels = require('../repositories/getAllStockLevelsRepository');
 
 const createOrder = async (newOrder) => {
-    if(!validateOrderNumber.validateOrderNumber(newOrder.order.order_number)) {
+    if (!validateOrderNumber.validateOrderNumber(newOrder.order.order_number)) {
         const message = "Invalid Order Number";
         throw new Error(message);
     }
 
-    if(!validateEmailAddress.validateEmailAddress(newOrder.order.email_address)) {
+    if (!validateEmailAddress.validateEmailAddress(newOrder.order.email_address)) {
         const message = "Invalid Email Address";
         throw new Error(message);
     }
 
-    if(!validateShippingAddress.validateShippingAddress(newOrder.order.shipping_address)) {
+    if (!validateShippingAddress.validateShippingAddress(newOrder.order.shipping_address)) {
         const message = "Invalid Shipping Address";
         throw new Error(message);
     }
@@ -32,9 +32,9 @@ const createOrder = async (newOrder) => {
         const findProductId = (element) => {
             return element.id === id;
         };
-        const productIndex = allStockLevels.findIndex(findProductId)
-        const currentStockLevel = allStockLevels[productIndex].stock_level
-        const newStockLevel = currentStockLevel - orderQuantity
+        const productIndex = allStockLevels.findIndex(findProductId);
+        const currentStockLevel = allStockLevels[productIndex].stock_level;
+        const newStockLevel = currentStockLevel - orderQuantity;
 
         if (newStockLevel < 0) {
             const message = `Not enough stock of ${productName}.`;

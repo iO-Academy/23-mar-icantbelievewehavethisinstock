@@ -7,6 +7,7 @@ const updateProducts = async (SKU, updatedDetails) => {
         const message = "Invalid SKU.";
         throw new Error(message);
     }
+
     const id = SKUToID.SKUToId(SKU);
 
     try {
