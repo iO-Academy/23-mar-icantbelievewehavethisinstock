@@ -12,6 +12,7 @@
 -   [Update stock levels](#update-stock-levels)
 
 ***Orders***
+-   [Get all orders](#get-all-orders)
 -   [Place an order](#place-an-order)
 -   [Cancel an order](#cancel-an-order)
 ---
@@ -252,6 +253,63 @@ __NOTE: `stock_level` takes positive *and* negative numbers.__
 
     * **Code:** 400 BAD REQUEST <br />
       **Content:** `{"message": "Invalid SKU.", "data": []}`
+
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error."}`
+
+
+### Get all orders
+[Back to top](#api-documentation)
+
+* **URL**
+
+  /orders
+
+* **Method:**
+
+  `GET`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:** <br />
+
+  ```json
+  {
+      "orders": [
+          {
+              "order_number": "ORDER0001",
+              "customer_email": "jeff@amazeon.com",
+              "products": [
+                  {
+                      "name": "Odd Socks",
+                      "quantity": "3"
+                  },
+                  {
+                      "name": "Blunt Pencils",
+                      "quantity": "4"
+                  }
+              ]
+          },
+          {
+              "order_number": "ORDER0002",
+              "customer_email": "jeff@amazeon.com",
+              "products": [
+                  {
+                      "name": "Odd Socks",
+                      "quantity": "1"
+                  },
+                  {
+                      "name": "Blunt Pencils",
+                      "quantity": "1"
+                  }
+              ]
+          }
+      ]
+  }
+  ```
+
+* **Error Response:**
 
     * **Code:** 500 SERVER ERROR <br />
       **Content:** `{"message": "Unexpected error."}`
