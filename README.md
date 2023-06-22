@@ -101,7 +101,7 @@
 
 * **URL**
 
-  /products/{SKU}
+  /products/:SKU
 
 * **Method:**
 
@@ -148,7 +148,7 @@
 
 * **URL**
 
-  /products/{SKU}
+  /products/:SKU
 
 * **Method:**
 
@@ -181,7 +181,7 @@
 
 * **URL**
 
-  /products/{SKU}
+  /products/:SKU
 
 * **Method:**
 
@@ -221,7 +221,7 @@
 
 * **URL**
 
-  /update/{SKU}
+  /update/:SKU
 
 * **Method:**
 
@@ -380,7 +380,7 @@ __NOTE: `stock_level` takes positive *and* negative numbers.__
 
 * **URL**
 
-  /orders/{order_number}
+  /orders/:order_number
 
 * **Method:**
 
