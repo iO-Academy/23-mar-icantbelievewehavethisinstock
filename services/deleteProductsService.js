@@ -3,7 +3,7 @@ const SKUToID = require('../functions/sku-to-id');
 const validateSKU = require('../functions/validate-sku');
 
 const deleteProducts = async (SKU) => {
-    if(!validateSKU.validateSKU(SKU)) {
+    if (!validateSKU.validateSKU(SKU)) {
         const message = "Invalid SKU.";
         throw new Error(message);
     }

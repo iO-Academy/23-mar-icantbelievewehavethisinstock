@@ -15,7 +15,7 @@ const getOrders = async () => {
             currentOrderArray.forEach((order) => {
                 eachOrder.push(order.split(":"));
                 productsForEachOrderObject = eachOrder.map((innerArray) => Object.assign({}, ...innerArray.map((value, index) => ({[productsOrderKeys[index]]: value}))));
-            });
+            })
 
             resultsObject.order_number = result.order_number;
             resultsObject.customer_email = result.customer_email;

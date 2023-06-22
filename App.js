@@ -10,5 +10,5 @@ app.use(express.json());
 router(app);
 
 app.listen(port, () => {
-    console.log(`Ican\'tbelievewehavethisinstock running. Listening on ${port}`);
-});
+    console.log(`Ican'tbelievewehavethisinstock running. Listening on ${port}`);
+})

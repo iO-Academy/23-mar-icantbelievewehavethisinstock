@@ -12,6 +12,7 @@
 -   [Update stock levels](#update-stock-levels)
 
 ***Orders***
+-   [Get all orders](#get-all-orders)
 -   [Place an order](#place-an-order)
 -   [Cancel an order](#cancel-an-order)
 ---
@@ -34,20 +35,20 @@
 
   ```json
   {
-     "products": [
-        { 
-            "id": 1,
-            "SKU": "ICBWHTIS0001",
-            "name": "Odd Socks",
-            "price": 125
-        },
-        { 
-            "id": 2,
-            "SKU": "ICBWHTIS0002",
-            "name": "Blunt Pencils",
-            "price": 1200
-        }
-    ]
+      "products": [
+          { 
+              "id": 1,
+              "SKU": "ICBWHTIS0001",
+              "name": "Odd Socks",
+              "price": 125
+          },
+          { 
+              "id": 2,
+              "SKU": "ICBWHTIS0002",
+              "name": "Blunt Pencils",
+              "price": 1200
+          }
+      ]
   }
   ```
 
@@ -257,7 +258,64 @@ __NOTE: `stock_level` takes positive *and* negative numbers.__
       **Content:** `{"message": "Unexpected error."}`
 
 
-### Place an Order
+### Get all orders
+[Back to top](#api-documentation)
+
+* **URL**
+
+  /orders
+
+* **Method:**
+
+  `GET`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:** <br />
+
+  ```json
+  {
+      "orders": [
+          {
+              "order_number": "ORDER0001",
+              "customer_email": "jeff@amazeon.com",
+              "products": [
+                  {
+                      "name": "Odd Socks",
+                      "quantity": "3"
+                  },
+                  {
+                      "name": "Blunt Pencils",
+                      "quantity": "4"
+                  }
+              ]
+          },
+          {
+              "order_number": "ORDER0002",
+              "customer_email": "jeff@amazeon.com",
+              "products": [
+                  {
+                      "name": "Odd Socks",
+                      "quantity": "1"
+                  },
+                  {
+                      "name": "Blunt Pencils",
+                      "quantity": "1"
+                  }
+              ]
+          }
+      ]
+  }
+  ```
+
+* **Error Response:**
+
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error."}`
+
+
+### Place an order
 [Back to top](#api-documentation)
 
 * **URL**
@@ -317,7 +375,7 @@ __NOTE: `stock_level` takes positive *and* negative numbers.__
       **Content:** `{"message": "Unexpected error."}`
 
 
-### Cancel an Order 
+### Cancel an order 
 [Back to top](#api-documentation)
 
 * **URL**
