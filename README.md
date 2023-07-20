@@ -111,7 +111,6 @@
 
 ```json
 {
-    "SKU": "ICBWHTIS0010",
     "updatedData": {
         "name": "Sky Hooks",        
         "price": 1
